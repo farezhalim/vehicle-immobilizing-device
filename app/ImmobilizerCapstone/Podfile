@@ -6,6 +6,7 @@ target 'ImmobilizerCapstone' do
   use_frameworks!
 
   # Pods for ImmobilizerCapstone
+  pod 'Firebase/Core'
 
   target 'ImmobilizerCapstoneTests' do
     inherit! :search_paths
