@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E5E765BED063861F77173C3A1745E5F7"
+               BlueprintIdentifier = "F101F5AF5B2604C3FA0A05FAEADC6B96"
                BuildableName = "Pods_ImmobilizerCapstone.framework"
                BlueprintName = "Pods-ImmobilizerCapstone"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E5E765BED063861F77173C3A1745E5F7"
+            BlueprintIdentifier = "F101F5AF5B2604C3FA0A05FAEADC6B96"
             BuildableName = "Pods_ImmobilizerCapstone.framework"
             BlueprintName = "Pods-ImmobilizerCapstone"
             ReferencedContainer = "container:Pods.xcodeproj">

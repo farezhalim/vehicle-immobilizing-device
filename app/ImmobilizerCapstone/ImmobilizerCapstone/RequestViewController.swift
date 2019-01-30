@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class RequestViewController: UIViewController {
 
@@ -21,6 +22,14 @@ class RequestViewController: UIViewController {
     
     @IBAction func signOutButtonTapped(_ sender: Any) {
         print("sign out button tapped")
+        
+        do {
+            try Auth.auth().signOut()
+            self.dismiss(animated: true, completion: nil)
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+        
     }
     @IBAction func requestKeyButtonTapped(_ sender: Any) {
         print("requestKey button tapped")
