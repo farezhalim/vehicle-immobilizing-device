@@ -8,6 +8,7 @@ target 'ImmobilizerCapstone' do
   # Pods for ImmobilizerCapstone
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 
   target 'ImmobilizerCapstoneTests' do
     inherit! :search_paths
