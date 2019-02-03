@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignInViewController: UIViewController {
 
@@ -22,12 +23,11 @@ class SignInViewController: UIViewController {
     @IBAction func registerNewAccountButtonTapped(_ sender: Any) {
         print("Register button tapped")
         
-        // performSegue(withIdentifier: "registerSegue", sender: self)
+        performSegue(withIdentifier: "registerSegue", sender: self)
         
-        let registerViewController = self.storyboard?.instantiateViewController(withIdentifier:
-            "RegisterUserViewController") as! RegisterUserViewController
+        //let registerViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterUserViewController") as! RegisterUserViewController
         
-        self.present(registerViewController, animated: true)
+        //self.present(registerViewController, animated: true)
         
     }
     
@@ -44,22 +44,29 @@ class SignInViewController: UIViewController {
             print("Username \(String(describing: userName)) or password \(String(describing: userPassword)) is empty")
             displayMessage(userMessage: "One of the required fields is missing")
             return
-        } else {
-            
-            
-            // wrong password
-            displayMessage(userMessage: "Incorrect username or password")
+        }
+        else {
+
+            Auth.auth().signIn(withEmail: userName!, password: userPassword!) { (user, error) in
+                if error == nil{
+                    // self.performSegue(withIdentifier: "loginToHome", sender: self)
+                    
+                    let requestViewController = self.storyboard?.instantiateViewController(withIdentifier: "RequestViewController") as! RequestViewController
+                    
+                    self.present(requestViewController, animated: true)
+                }
+                else{
+                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+
+                    alertController.addAction(defaultAction)
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+
             return
         }
         
-
-        
-        //  activity indicator
-        let myActivityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
-        myActivityIndicator.center = view.center
-        myActivityIndicator.hidesWhenStopped = false // to prevent from hiding when stopAnimating() is called
-        myActivityIndicator.startAnimating()
-        view.addSubview(myActivityIndicator)
         
         
     }

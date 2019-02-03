@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class RegisterUserViewController: UIViewController {
 
@@ -15,101 +16,6 @@ class RegisterUserViewController: UIViewController {
     @IBOutlet weak var emailAddressTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        print("cancel button tapped")
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func singupButtonTapped(_ sender: Any) {
-        print("sign up button tapped")
-        if (firstNameTextField.text?.isEmpty)! || (lastNameTestField.text?.isEmpty)! || (emailAddressTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)! {
-            displayMessage(userMessage: "All fields are required to be filled in")
-            return
-        }
-        
-        if ((passwordTextField.text?.elementsEqual(repeatPasswordTextField.text!)))! != true {
-            displayMessage(userMessage: "Passwords do not match")
-            return
-        }
-        
-        //  activity indicator
-        let myActivityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
-        myActivityIndicator.center = view.center
-        myActivityIndicator.hidesWhenStopped = false // to prevent from hiding when stopAnimating() is called
-        myActivityIndicator.startAnimating()
-        view.addSubview(myActivityIndicator)
-        
-        let myUrl = URL(string: "http://localhost:8080/api/users")
-        var request = URLRequest(url:myUrl!)
-        request.httpMethod = "POST" // compose a query string
-        request.addValue("application/json", forHTTPHeaderField: "content-type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let postString = ["firstName": firstNameTextField.text!,
-                          "lastName": lastNameTestField.text!,
-                          "userName": emailAddressTextField.text!,
-                          "userPassword": passwordTextField.text!,] as [String: String]
-        
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: postString, options: .prettyPrinted)
-        } catch let error {
-            print(error.localizedDescription)
-            displayMessage(userMessage: "Something went wrong. Try again.")
-        }
-        
-        let task = URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
-            self.removeActivityIndicator(activityIndicator: myActivityIndicator)
-            
-            if error != nil {
-                self.displayMessage(userMessage: "Could not perform this request. Please try again.")
-                print("error = \(String(describing: error))")
-                return
-            }
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
-                
-                if let parseJSON = json {
-                    
-                    
-                    let userId = parseJSON["userId"] as? String
-                    print("User id: \(String(describing: userId!))")
-                    
-                    if (userId?.isEmpty)!
-                    {
-                        // Display an Alert dialog with a friendly error message
-                        self.displayMessage(userMessage: "Could not successfully perform this request. Please try again later")
-                        return
-                    } else {
-                        self.displayMessage(userMessage: "Successfully Registered a New Account. Please proceed to Sign in")
-                    }
-                    
-                } else {
-                    //Display an Alert dialog with a friendly error message
-                    self.displayMessage(userMessage: "Could not successfully perform this request. Please try again later")
-                }
-            } catch {
-                
-                self.removeActivityIndicator(activityIndicator: myActivityIndicator)
-                
-                // Display an Alert dialog with a friendly error message
-                self.displayMessage(userMessage: "Could not successfully perform this request. Please try again later")
-                print(error)
-            }
-        }
-            
-            task.resume()
-        
-    }
-    
     
     func removeActivityIndicator(activityIndicator: UIActivityIndicatorView) {
         DispatchQueue.main.async {
@@ -134,6 +40,110 @@ class RegisterUserViewController: UIViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        print("cancel button tapped")
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func singupButtonTapped(_ sender: Any) {
+        print("sign up button tapped")
+        if (firstNameTextField.text?.isEmpty)! || (lastNameTestField.text?.isEmpty)! || (emailAddressTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)! {
+            displayMessage(userMessage: "All fields are required to be filled in")
+            return
+        }
+        
+        if ((passwordTextField.text?.elementsEqual(repeatPasswordTextField.text!)))! != true {
+            displayMessage(userMessage: "Passwords do not match")
+            return
+        } else {
+            Auth.auth().createUser(withEmail: emailAddressTextField.text!, password: passwordTextField.text!)
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+    }
+            
+        
+        
+        
+//        //  activity indicator
+//        let myActivityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+//        myActivityIndicator.center = view.center
+//        myActivityIndicator.hidesWhenStopped = false // to prevent from hiding when stopAnimating() is called
+//        myActivityIndicator.startAnimating()
+//        view.addSubview(myActivityIndicator)
+//
+//        let myUrl = URL(string: "http://localhost:8080/api/users")
+//        var request = URLRequest(url:myUrl!)
+//        request.httpMethod = "POST" // compose a query string
+//        request.addValue("application/json", forHTTPHeaderField: "content-type")
+//        request.addValue("application/json", forHTTPHeaderField: "Accept")
+//
+//        let postString = ["firstName": firstNameTextField.text!,
+//                          "lastName": lastNameTestField.text!,
+//                          "userName": emailAddressTextField.text!,
+//                          "userPassword": passwordTextField.text!,] as [String: String]
+//
+//        do {
+//            request.httpBody = try JSONSerialization.data(withJSONObject: postString, options: .prettyPrinted)
+//        } catch let error {
+//            print(error.localizedDescription)
+//            displayMessage(userMessage: "Something went wrong. Try again.")
+//        }
+//
+//        let task = URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+//            self.removeActivityIndicator(activityIndicator: myActivityIndicator)
+//
+//            if error != nil {
+//                self.displayMessage(userMessage: "Could not perform this request. Please try again.")
+//                print("error = \(String(describing: error))")
+//                return
+//            }
+//
+//            do {
+//                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+//
+//                if let parseJSON = json {
+//
+//
+//                    let userId = parseJSON["userId"] as? String
+//                    print("User id: \(String(describing: userId!))")
+//
+//                    if (userId?.isEmpty)!
+//                    {
+//                        // Display an Alert dialog with a friendly error message
+//                        self.displayMessage(userMessage: "Could not successfully perform this request. Please try again later")
+//                        return
+//                    } else {
+//                        self.displayMessage(userMessage: "Successfully Registered a New Account. Please proceed to Sign in")
+//                    }
+//
+//                } else {
+//                    //Display an Alert dialog with a friendly error message
+//                    self.displayMessage(userMessage: "Could not successfully perform this request. Please try again later")
+//                }
+//            } catch {
+//
+//                self.removeActivityIndicator(activityIndicator: myActivityIndicator)
+//
+//                // Display an Alert dialog with a friendly error message
+//                self.displayMessage(userMessage: "Could not successfully perform this request. Please try again later")
+//                print(error)
+//            }
+//        }
+//
+//            task.resume()
+//
+    
+    
+    
+    
+    
     
     /*
     // MARK: - Navigation
@@ -146,3 +156,5 @@ class RegisterUserViewController: UIViewController {
     */
 
 }
+
+
