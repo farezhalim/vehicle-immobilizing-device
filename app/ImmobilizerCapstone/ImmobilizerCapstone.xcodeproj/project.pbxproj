@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07D5A4CAD3274545310CB2D7 /* Pods_ImmobilizerCapstone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFC963CBD2E14DFF5787AB3 /* Pods_ImmobilizerCapstone.framework */; };
 		0D07B49821EBE80600EB5E4A /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D07B49721EBE80600EB5E4A /* RegisterUserViewController.swift */; };
 		0D07B49A21EBF44C00EB5E4A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D07B49921EBF44C00EB5E4A /* GoogleService-Info.plist */; };
 		0DEB3F5E21E6CDBA009119B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEB3F5D21E6CDBA009119B5 /* AppDelegate.swift */; };
@@ -18,9 +19,9 @@
 		0DEB3F7E21E6CDBF009119B5 /* ImmobilizerCapstoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEB3F7D21E6CDBF009119B5 /* ImmobilizerCapstoneUITests.swift */; };
 		0DEB3F8C21E6D527009119B5 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEB3F8B21E6D527009119B5 /* SignInViewController.swift */; };
 		0DEB3F8E21E6D83E009119B5 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEB3F8D21E6D83E009119B5 /* RequestViewController.swift */; };
-		3BB0660A8AE40888B99E071F /* Pods_ImmobilizerCapstoneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B560C648123429422D9CC5B9 /* Pods_ImmobilizerCapstoneUITests.framework */; };
-		72FEA91AAF9F080B5CDD8E4B /* Pods_ImmobilizerCapstone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115603F49104C91EBCD89007 /* Pods_ImmobilizerCapstone.framework */; };
-		87D8564CA96C39A141DA5644 /* Pods_ImmobilizerCapstoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8A2D6BB60C5E1C76E82949 /* Pods_ImmobilizerCapstoneTests.framework */; };
+		50BFF5E190DA9897F34D89B7 /* Pods_ImmobilizerCapstoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9906A636ED273291230EB913 /* Pods_ImmobilizerCapstoneTests.framework */; };
+		7CCDDE9093A57E808B8D9709 /* Pods_ImmobilizerCapstoneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B349B7BB64CA7D835536B215 /* Pods_ImmobilizerCapstoneUITests.framework */; };
+		CFCF451A220A156A007D2605 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = CFCF451C220A156A007D2605 /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,15 +59,16 @@
 		0DEB3F7F21E6CDBF009119B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0DEB3F8B21E6D527009119B5 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		0DEB3F8D21E6D83E009119B5 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
-		115603F49104C91EBCD89007 /* Pods_ImmobilizerCapstone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImmobilizerCapstone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3FE43D1287B613BAB653C313 /* Pods-ImmobilizerCapstoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImmobilizerCapstoneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImmobilizerCapstoneTests/Pods-ImmobilizerCapstoneTests.debug.xcconfig"; sourceTree = "<group>"; };
-		70669EBD937156D0C1EAFCAE /* Pods-ImmobilizerCapstone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImmobilizerCapstone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImmobilizerCapstone/Pods-ImmobilizerCapstone.debug.xcconfig"; sourceTree = "<group>"; };
-		7CFD182199992134E03B1E08 /* Pods-ImmobilizerCapstoneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImmobilizerCapstoneUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImmobilizerCapstoneUITests/Pods-ImmobilizerCapstoneUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		AC179C5424389A7079B81C66 /* Pods-ImmobilizerCapstoneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImmobilizerCapstoneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImmobilizerCapstoneUITests/Pods-ImmobilizerCapstoneUITests.release.xcconfig"; sourceTree = "<group>"; };
-		B560C648123429422D9CC5B9 /* Pods_ImmobilizerCapstoneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImmobilizerCapstoneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C73FE97C5F7D2CB8BDC66F83 /* Pods-ImmobilizerCapstoneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImmobilizerCapstoneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImmobilizerCapstoneTests/Pods-ImmobilizerCapstoneTests.release.xcconfig"; sourceTree = "<group>"; };
-		CB8A2D6BB60C5E1C76E82949 /* Pods_ImmobilizerCapstoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImmobilizerCapstoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF254DE14324552738BBFCAB /* Pods-ImmobilizerCapstone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImmobilizerCapstone.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImmobilizerCapstone/Pods-ImmobilizerCapstone.release.xcconfig"; sourceTree = "<group>"; };
+		1F7CD878E4AE86282B390ECE /* Pods-ImmobilizerCapstoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImmobilizerCapstoneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImmobilizerCapstoneTests/Pods-ImmobilizerCapstoneTests.debug.xcconfig"; sourceTree = "<group>"; };
+		64DEF43170022533EB591F2B /* Pods-ImmobilizerCapstoneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImmobilizerCapstoneUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImmobilizerCapstoneUITests/Pods-ImmobilizerCapstoneUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7A12FE78F4A2D64C96C1EFF1 /* Pods-ImmobilizerCapstone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImmobilizerCapstone.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImmobilizerCapstone/Pods-ImmobilizerCapstone.release.xcconfig"; sourceTree = "<group>"; };
+		7B7979AFF1E02405BFBF3A4C /* Pods-ImmobilizerCapstoneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImmobilizerCapstoneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImmobilizerCapstoneUITests/Pods-ImmobilizerCapstoneUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9906A636ED273291230EB913 /* Pods_ImmobilizerCapstoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImmobilizerCapstoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BFC963CBD2E14DFF5787AB3 /* Pods_ImmobilizerCapstone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImmobilizerCapstone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B349B7BB64CA7D835536B215 /* Pods_ImmobilizerCapstoneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImmobilizerCapstoneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFCF451E220A1581007D2605 /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/Podfile; sourceTree = "<group>"; };
+		F33357B205A6336B83C0D409 /* Pods-ImmobilizerCapstoneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImmobilizerCapstoneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImmobilizerCapstoneTests/Pods-ImmobilizerCapstoneTests.release.xcconfig"; sourceTree = "<group>"; };
+		FF6B34C707243A5C05C66145 /* Pods-ImmobilizerCapstone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImmobilizerCapstone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImmobilizerCapstone/Pods-ImmobilizerCapstone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72FEA91AAF9F080B5CDD8E4B /* Pods_ImmobilizerCapstone.framework in Frameworks */,
+				07D5A4CAD3274545310CB2D7 /* Pods_ImmobilizerCapstone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87D8564CA96C39A141DA5644 /* Pods_ImmobilizerCapstoneTests.framework in Frameworks */,
+				50BFF5E190DA9897F34D89B7 /* Pods_ImmobilizerCapstoneTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,19 +92,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BB0660A8AE40888B99E071F /* Pods_ImmobilizerCapstoneUITests.framework in Frameworks */,
+				7CCDDE9093A57E808B8D9709 /* Pods_ImmobilizerCapstoneUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		06F8C866471891C244073EA0 /* Frameworks */ = {
+		00FD530DEEBDD610B82447A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				115603F49104C91EBCD89007 /* Pods_ImmobilizerCapstone.framework */,
-				CB8A2D6BB60C5E1C76E82949 /* Pods_ImmobilizerCapstoneTests.framework */,
-				B560C648123429422D9CC5B9 /* Pods_ImmobilizerCapstoneUITests.framework */,
+				9BFC963CBD2E14DFF5787AB3 /* Pods_ImmobilizerCapstone.framework */,
+				9906A636ED273291230EB913 /* Pods_ImmobilizerCapstoneTests.framework */,
+				B349B7BB64CA7D835536B215 /* Pods_ImmobilizerCapstoneUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -115,7 +117,7 @@
 				0DEB3F7C21E6CDBF009119B5 /* ImmobilizerCapstoneUITests */,
 				0DEB3F5B21E6CDBA009119B5 /* Products */,
 				D0E542AEBF64124B06256642 /* Pods */,
-				06F8C866471891C244073EA0 /* Frameworks */,
+				00FD530DEEBDD610B82447A8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,12 +169,13 @@
 		D0E542AEBF64124B06256642 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				70669EBD937156D0C1EAFCAE /* Pods-ImmobilizerCapstone.debug.xcconfig */,
-				FF254DE14324552738BBFCAB /* Pods-ImmobilizerCapstone.release.xcconfig */,
-				3FE43D1287B613BAB653C313 /* Pods-ImmobilizerCapstoneTests.debug.xcconfig */,
-				C73FE97C5F7D2CB8BDC66F83 /* Pods-ImmobilizerCapstoneTests.release.xcconfig */,
-				7CFD182199992134E03B1E08 /* Pods-ImmobilizerCapstoneUITests.debug.xcconfig */,
-				AC179C5424389A7079B81C66 /* Pods-ImmobilizerCapstoneUITests.release.xcconfig */,
+				CFCF451C220A156A007D2605 /* Podfile */,
+				FF6B34C707243A5C05C66145 /* Pods-ImmobilizerCapstone.debug.xcconfig */,
+				7A12FE78F4A2D64C96C1EFF1 /* Pods-ImmobilizerCapstone.release.xcconfig */,
+				1F7CD878E4AE86282B390ECE /* Pods-ImmobilizerCapstoneTests.debug.xcconfig */,
+				F33357B205A6336B83C0D409 /* Pods-ImmobilizerCapstoneTests.release.xcconfig */,
+				64DEF43170022533EB591F2B /* Pods-ImmobilizerCapstoneUITests.debug.xcconfig */,
+				7B7979AFF1E02405BFBF3A4C /* Pods-ImmobilizerCapstoneUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -184,11 +187,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0DEB3F8221E6CDBF009119B5 /* Build configuration list for PBXNativeTarget "ImmobilizerCapstone" */;
 			buildPhases = (
-				4F6680FAB5AA7AFDA9453861 /* [CP] Check Pods Manifest.lock */,
+				65C1175AD2C573B7B2740010 /* [CP] Check Pods Manifest.lock */,
 				0DEB3F5621E6CDB9009119B5 /* Sources */,
 				0DEB3F5721E6CDB9009119B5 /* Frameworks */,
 				0DEB3F5821E6CDB9009119B5 /* Resources */,
-				B9C773C82013D8EF8A094556 /* [CP] Embed Pods Frameworks */,
+				D7962F02A309EE7CC13F4B5E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -203,7 +206,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0DEB3F8521E6CDBF009119B5 /* Build configuration list for PBXNativeTarget "ImmobilizerCapstoneTests" */;
 			buildPhases = (
-				60FB48CA6D31606D0FB2C01F /* [CP] Check Pods Manifest.lock */,
+				D01F59F9C53D3F69FB4CE1FA /* [CP] Check Pods Manifest.lock */,
 				0DEB3F6A21E6CDBF009119B5 /* Sources */,
 				0DEB3F6B21E6CDBF009119B5 /* Frameworks */,
 				0DEB3F6C21E6CDBF009119B5 /* Resources */,
@@ -222,7 +225,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0DEB3F8821E6CDBF009119B5 /* Build configuration list for PBXNativeTarget "ImmobilizerCapstoneUITests" */;
 			buildPhases = (
-				DC676E8167F5FE002E14DBC8 /* [CP] Check Pods Manifest.lock */,
+				CB8605698E75F5E962652552 /* [CP] Check Pods Manifest.lock */,
 				0DEB3F7521E6CDBF009119B5 /* Sources */,
 				0DEB3F7621E6CDBF009119B5 /* Frameworks */,
 				0DEB3F7721E6CDBF009119B5 /* Resources */,
@@ -285,6 +288,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFCF451A220A156A007D2605 /* Podfile in Resources */,
 				0DEB3F6821E6CDBE009119B5 /* LaunchScreen.storyboard in Resources */,
 				0D07B49A21EBF44C00EB5E4A /* GoogleService-Info.plist in Resources */,
 				0DEB3F6521E6CDBE009119B5 /* Assets.xcassets in Resources */,
@@ -309,7 +313,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4F6680FAB5AA7AFDA9453861 /* [CP] Check Pods Manifest.lock */ = {
+		65C1175AD2C573B7B2740010 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -331,7 +335,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		60FB48CA6D31606D0FB2C01F /* [CP] Check Pods Manifest.lock */ = {
+		CB8605698E75F5E962652552 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ImmobilizerCapstoneUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D01F59F9C53D3F69FB4CE1FA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -353,7 +379,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B9C773C82013D8EF8A094556 /* [CP] Embed Pods Frameworks */ = {
+		D7962F02A309EE7CC13F4B5E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -379,28 +405,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImmobilizerCapstone/Pods-ImmobilizerCapstone-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DC676E8167F5FE002E14DBC8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ImmobilizerCapstoneUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -464,6 +468,14 @@
 				0DEB3F6721E6CDBE009119B5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CFCF451C220A156A007D2605 /* Podfile */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFCF451E220A1581007D2605 /* en */,
+			);
+			name = Podfile;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -587,7 +599,7 @@
 		};
 		0DEB3F8321E6CDBF009119B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70669EBD937156D0C1EAFCAE /* Pods-ImmobilizerCapstone.debug.xcconfig */;
+			baseConfigurationReference = FF6B34C707243A5C05C66145 /* Pods-ImmobilizerCapstone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -605,7 +617,7 @@
 		};
 		0DEB3F8421E6CDBF009119B5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF254DE14324552738BBFCAB /* Pods-ImmobilizerCapstone.release.xcconfig */;
+			baseConfigurationReference = 7A12FE78F4A2D64C96C1EFF1 /* Pods-ImmobilizerCapstone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -623,7 +635,7 @@
 		};
 		0DEB3F8621E6CDBF009119B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3FE43D1287B613BAB653C313 /* Pods-ImmobilizerCapstoneTests.debug.xcconfig */;
+			baseConfigurationReference = 1F7CD878E4AE86282B390ECE /* Pods-ImmobilizerCapstoneTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -644,7 +656,7 @@
 		};
 		0DEB3F8721E6CDBF009119B5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C73FE97C5F7D2CB8BDC66F83 /* Pods-ImmobilizerCapstoneTests.release.xcconfig */;
+			baseConfigurationReference = F33357B205A6336B83C0D409 /* Pods-ImmobilizerCapstoneTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -665,7 +677,7 @@
 		};
 		0DEB3F8921E6CDBF009119B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7CFD182199992134E03B1E08 /* Pods-ImmobilizerCapstoneUITests.debug.xcconfig */;
+			baseConfigurationReference = 64DEF43170022533EB591F2B /* Pods-ImmobilizerCapstoneUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -685,7 +697,7 @@
 		};
 		0DEB3F8A21E6CDBF009119B5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC179C5424389A7079B81C66 /* Pods-ImmobilizerCapstoneUITests.release.xcconfig */;
+			baseConfigurationReference = 7B7979AFF1E02405BFBF3A4C /* Pods-ImmobilizerCapstoneUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

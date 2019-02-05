@@ -14,6 +14,8 @@ class RequestViewController: UIViewController {
 
     @IBOutlet weak var macAddressTextField: UITextField!
     @IBOutlet weak var bluetoothPairKeyLabel: UILabel!
+    @IBOutlet weak var bluetoothNetworkLabel: UILabel!
+    
     
     var ref : DatabaseReference!
     
@@ -42,29 +44,56 @@ class RequestViewController: UIViewController {
        let mac = macAddressTextField.text
         
         ref.queryOrdered(byChild: "MAC").queryEqual(toValue: mac).observeSingleEvent(of: .value, with: { (snapshot) in
-           print(snapshot.value as Any)
-           // let device = snapshot.value as? NSDictionary
-           // let password = device?["unlockPass"] as? String ?? ""
-           // print(password)
-            
-            var pass: String = "empty"
-            
-            let userDict = snapshot.value as! [String: Any]
-            for each in userDict as [String:AnyObject]{
+            print(snapshot.value as Any)
+            if (snapshot.exists()){
+                print(snapshot.value as Any)
+                // let device = snapshot.value as? NSDictionary
+                // let password = device?["unlockPass"] as? String ?? ""
+                // print(password)
                 
-                pass = each.value["unlockPass"] as! String
-                print(pass)
+                var pass: String = "empty"
+                var networkName: String = "empty"
+                
+                let userDict = snapshot.value as! [String: Any]
+                for each in userDict as [String:AnyObject]{
+                    
+                    pass = each.value["unlockPass"] as! String
+                    networkName = each.value["NetworkID"] as! String
+                    print(pass)
+                    print(networkName)
+                    
+                }
+                
+                self.bluetoothPairKeyLabel.text = pass
+                self.bluetoothNetworkLabel.text = networkName
                 
             }
-            
-            self.bluetoothPairKeyLabel.text = pass
+            else{
+                let alertController = UIAlertController(title: "OKButton", message: "Invalid MAC Address. Please Enter another MAC Address", preferredStyle: .alert)
+                self.present(alertController, animated: true, completion: nil)
+
+            }
             
             //let device = userDict["MAC"] as! String
             
             
         })
 
-        
+//        func displayMessage(userMessage:String) -> Void {
+//            DispatchQueue.main.async {
+//                let alertController = UIAlertController(title: "Alert", message: userMessage, preferredStyle: .alert)
+//
+//                let OKAction = UIAlertAction(title: "OK", style: .default)
+//                { (action:UIAlertAction!) in
+//                    print("OK Button Tapped")
+//                    DispatchQueue.main.async {
+//                        self.dismiss(animated: true, completion: nil)
+//                    }
+//                }
+//                alertController.addAction(OKAction)
+//                self.present(alertController, animated: true, completion: nil)
+//            }
+//        }
        // let query = ref.queryOrdered(byChild: "devices/MAC").queryEqual(toValue: mac).queryEqual(toValue: true)
        // print(query)
             
