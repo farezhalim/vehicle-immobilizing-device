@@ -6093,6 +6093,12 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <part name="J2" library="SparkFun-Connectors" deviceset="CONN_02" device="POLAR"/>
 <part name="P+8" library="SparkFun" deviceset="VCC" device="" value="VBAT"/>
 <part name="GND9" library="SparkFun" deviceset="GND" device=""/>
+<part name="LED2" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="LED" device="3MM"/>
+<part name="LED3" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="LED" device="3MM"/>
+<part name="R6" library="SparkFun-Resistors" deviceset="10KOHM" device="-HORIZ-1/4W-5%" value="10k"/>
+<part name="R7" library="SparkFun-Resistors" deviceset="10KOHM" device="-HORIZ-1/4W-5%" value="10k"/>
+<part name="GND10" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="GND11" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -6274,6 +6280,28 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <instance part="GND9" gate="1" x="276.86" y="137.16" smashed="yes">
 <attribute name="VALUE" x="274.32" y="134.62" size="1.778" layer="96"/>
 </instance>
+<instance part="LED2" gate="G$1" x="68.58" y="83.82" smashed="yes">
+<attribute name="NAME" x="72.136" y="79.248" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="74.295" y="79.248" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="LED3" gate="G$1" x="78.74" y="83.82" smashed="yes">
+<attribute name="NAME" x="82.296" y="79.248" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="84.455" y="79.248" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="R6" gate="G$1" x="68.58" y="71.12" smashed="yes" rot="R90">
+<attribute name="NAME" x="67.056" y="71.12" size="1.778" layer="95" font="vector" rot="R90" align="bottom-center"/>
+<attribute name="VALUE" x="70.104" y="71.12" size="1.778" layer="96" font="vector" rot="R90" align="top-center"/>
+</instance>
+<instance part="R7" gate="G$1" x="78.74" y="71.12" smashed="yes" rot="R90">
+<attribute name="NAME" x="77.216" y="71.12" size="1.778" layer="95" font="vector" rot="R90" align="bottom-center"/>
+<attribute name="VALUE" x="80.264" y="71.12" size="1.778" layer="96" font="vector" rot="R90" align="top-center"/>
+</instance>
+<instance part="GND10" gate="1" x="68.58" y="58.42" smashed="yes">
+<attribute name="VALUE" x="66.04" y="55.88" size="1.778" layer="96"/>
+</instance>
+<instance part="GND11" gate="1" x="78.74" y="58.42" smashed="yes">
+<attribute name="VALUE" x="76.2" y="55.88" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -6367,6 +6395,16 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <wire x1="279.4" y1="144.78" x2="276.86" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="276.86" y1="144.78" x2="276.86" y2="139.7" width="0.1524" layer="91"/>
 <pinref part="GND9" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="R6" gate="G$1" pin="1"/>
+<wire x1="68.58" y1="66.04" x2="68.58" y2="60.96" width="0.1524" layer="91"/>
+<pinref part="GND10" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="R7" gate="G$1" pin="1"/>
+<wire x1="78.74" y1="66.04" x2="78.74" y2="60.96" width="0.1524" layer="91"/>
+<pinref part="GND11" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="SCL" class="0">
@@ -6640,6 +6678,36 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <wire x1="243.84" y1="170.18" x2="243.84" y2="177.8" width="0.1524" layer="91"/>
 <junction x="243.84" y="177.8"/>
 <pinref part="L2" gate="G$1" pin="1"/>
+</segment>
+</net>
+<net name="N$2" class="0">
+<segment>
+<pinref part="MCU" gate="G$1" pin="GPIO5"/>
+<wire x1="91.44" y1="91.44" x2="68.58" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="91.44" x2="68.58" y2="86.36" width="0.1524" layer="91"/>
+<pinref part="LED2" gate="G$1" pin="A"/>
+</segment>
+</net>
+<net name="N$3" class="0">
+<segment>
+<pinref part="MCU" gate="G$1" pin="GPIO6"/>
+<wire x1="91.44" y1="88.9" x2="78.74" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="88.9" x2="78.74" y2="86.36" width="0.1524" layer="91"/>
+<pinref part="LED3" gate="G$1" pin="A"/>
+</segment>
+</net>
+<net name="N$5" class="0">
+<segment>
+<pinref part="LED2" gate="G$1" pin="C"/>
+<wire x1="68.58" y1="78.74" x2="68.58" y2="76.2" width="0.1524" layer="91"/>
+<pinref part="R6" gate="G$1" pin="2"/>
+</segment>
+</net>
+<net name="N$6" class="0">
+<segment>
+<pinref part="LED3" gate="G$1" pin="C"/>
+<wire x1="78.74" y1="78.74" x2="78.74" y2="76.2" width="0.1524" layer="91"/>
+<pinref part="R7" gate="G$1" pin="2"/>
 </segment>
 </net>
 </nets>
