@@ -21,12 +21,21 @@ accelerometer.set_rate() # set rate to 50 hz
 delay = 0.02 # collects data per second
 duration = 10 # seconds
 
-file = open("/home/pi/data_log.csv", "a")
-if os.stat("/home/pi//Desktop/data_log.csv").st_size == 0:
-	file.write("DateTime,X-axis,Y-axis,Z-axs=is\n")
+#file = open("/home/pi/data_log.csv", "a")
+#if os.stat("/home/pi//Desktop/data_log.csv").st_size == 0:
+#	file.write("DateTime,X-axis,Y-axis,Z-axs=is\n")
 
+## permanent loop write to CSV file
+with open("/home/pi/data.csv", "a") as log:
+	while True:
+		now = datetime.datetime.now()
+    x, y, z = accelerometer.read()
 
+    print('X={0}, Y={1}, Z={2}'.format(x,y,z))
+    log.write("{0},{1},{2},{3}\n".format(str(now),str(x),str(y),str(z)))
+    time.sleep(0.02)
 
+# loop that runs for a specific duration
 for i in range(duration/delay):
 		now = datetime.datetime.now()
     x, y, z = accelerometer.read()
