@@ -83,4 +83,4 @@ schematic.b#*
 schematic.s#*
 *.sch.lck
 *.brd.lck
-*.b$$
+*.b*
