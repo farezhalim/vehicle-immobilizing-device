@@ -25,19 +25,19 @@ duration = 10 # seconds
 #if os.stat("/home/pi//Desktop/data_log.csv").st_size == 0:
 #	file.write("DateTime,X-axis,Y-axis,Z-axs=is\n")
 
-## permanent loop write to CSV file
+## Don't run both loops
+## permanent loop write to CSV file (CTRL-C to terminate)
 with open("/home/pi/data.csv", "a") as log:
 	while True:
 		now = datetime.datetime.now()
-    x, y, z = accelerometer.read()
+		x, y, z = accelerometer.read()
+		print('X={0}, Y={1}, Z={2}'.format(x,y,z))
+		log.write("{0},{1},{2},{3}\n".format(str(now),str(x),str(y),str(z)))
+		time.sleep(0.02)
 
-    print('X={0}, Y={1}, Z={2}'.format(x,y,z))
-    log.write("{0},{1},{2},{3}\n".format(str(now),str(x),str(y),str(z)))
-    time.sleep(0.02)
-
-# loop that runs for a specific duration
+## loop that runs for a specific duration
 for i in range(duration/delay):
-		now = datetime.datetime.now()
+	now = datetime.datetime.now()
     x, y, z = accelerometer.read()
 
     print('X={0}, Y={1}, Z={2}'.format(x,y,z))
@@ -48,4 +48,3 @@ for i in range(duration/delay):
     time.sleep(0.02)
 
 file.close()
-
