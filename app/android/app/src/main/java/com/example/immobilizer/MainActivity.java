@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
          // FirebaseUser currentUser = mAuth.getCurrentUser();
-         // updateUI(currentUser);
+//          updateUI(currentUser);
     }
 
 //    private void updateUI(FirebaseUser currentUser) {
@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         emailAddress = findViewById(R.id.emailAddressEditText);
         password = findViewById(R.id.passwordEditText);
-        setContentView(R.layout.activity_main);
         signInButton = findViewById(R.id.signInButton);
         signInProgress = findViewById(R.id.signInProgress);
         signInProgress.setVisibility(View.INVISIBLE);
@@ -56,24 +56,18 @@ public class MainActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //signInProgress.setVisibility(View.VISIBLE);
-                //signInButton.setVisibility(View.INVISIBLE );
-
+                signInProgress.setVisibility(View.VISIBLE);
+                signInButton.setVisibility(View.INVISIBLE );
                 Log.d("btn", "sign in button clicked");
 
-
-
-
-                final String email = emailAddress.getText().toString();
-                final String pass = password.getText().toString();
+                String email = emailAddress.getText().toString();
+                String pass = password.getText().toString();
                 if (email.isEmpty() || pass.isEmpty()) {
-                    // showMessage("One of the required fields is empty");
+                    showMessage("One of the required fields is empty");
                     Log.d("btn", "empty fields");
                 } else {
                     signIn(email,pass);
                 }
-
-
 
             }
         });
@@ -85,11 +79,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    //signInProgress.setVisibility(View.INVISIBLE);
-                    //signInButton.setVisibility(View.VISIBLE);
+                    signInProgress.setVisibility(View.INVISIBLE);
+                    signInButton.setVisibility(View.VISIBLE);
                     updateUI();
                 } else {
-                    // showMessage(task.getException().getMessage());
+                    showMessage(task.getException().getMessage());
                     Log.d("btn", "invalid");
                 }
             }
