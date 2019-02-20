@@ -6042,16 +6042,19 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <class number="0" name="default" width="0.3048" drill="0.508">
 <clearance class="0" value="0.3048"/>
 </class>
+<class number="1" name="power" width="1.27" drill="0.508">
+<clearance class="1" value="0.508"/>
+</class>
 </classes>
 <parts>
-<part name="JP1" library="microbuilder" deviceset="HEADER-1X9" device="70MIL"/>
+<part name="JP1" library="microbuilder" deviceset="HEADER-1X9" device="70MIL" value="ADXL345"/>
 <part name="U$6" library="microbuilder" deviceset="GND" device=""/>
 <part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="LED1" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="LED" device="3MM"/>
 <part name="GND4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
-<part name="JP8" library="SparkFun" deviceset="FTDI_BASIC" device="PTH" value="DNP"/>
+<part name="JP8" library="SparkFun" deviceset="FTDI_BASIC" device="PTH" value="UART_CONN"/>
 <part name="GND32" library="SparkFun" deviceset="GND" device=""/>
 <part name="MCU" library="RPI-Zero" deviceset="RPI-ZERO" device=""/>
 <part name="R1" library="SparkFun-Resistors" deviceset="10KOHM" device="-HORIZ-1/4W-5%" value="10k"/>
@@ -6064,7 +6067,7 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <part name="P+4" library="SparkFun" deviceset="VCC" device="" value="VBAT"/>
 <part name="IC2" library="v-reg-3" deviceset="LM2576" device="T"/>
 <part name="D1" library="1N5822" deviceset="1N5822" device=""/>
-<part name="L1" library="PowerMagnetics" deviceset="WE-TI_1014" device="" technology="_7447480101"/>
+<part name="L1" library="PowerMagnetics" deviceset="WE-TI_1014" device="" technology="_7447480101" value="100uH"/>
 <part name="C1" library="cap-pan40" deviceset="C-PR" device="-3,5X8" value="1000uF"/>
 <part name="C2" library="cap-pan40" deviceset="C-PR" device="-3,5X8" value="100uF"/>
 <part name="Q1" library="SparkFun-DiscreteSemi" deviceset="MOSFET-NCH" device="-BSS138" value="220mA/50V/3.5Ω"/>
@@ -6082,15 +6085,14 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <part name="GND8" library="SparkFun" deviceset="GND" device=""/>
 <part name="IC1" library="v-reg-3" deviceset="LM2576" device="T"/>
 <part name="D2" library="1N5822" deviceset="1N5822" device=""/>
-<part name="L2" library="PowerMagnetics" deviceset="WE-TI_1014" device="" technology="_7447480101"/>
+<part name="L2" library="PowerMagnetics" deviceset="WE-TI_1014" device="" technology="_7447480101" value="100uH"/>
 <part name="C3" library="cap-pan40" deviceset="C-PR" device="-3,5X8" value="1000uF"/>
 <part name="C4" library="cap-pan40" deviceset="C-PR" device="-3,5X8" value="100uF"/>
 <part name="P+7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
-<part name="SUPPLY1" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="SUPPLY4" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
-<part name="FRAME1" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="FRAME_A_L" device=""/>
-<part name="J1" library="SparkFun-Connectors" deviceset="CONN_08" device="&quot;"/>
-<part name="J2" library="SparkFun-Connectors" deviceset="CONN_02" device="POLAR"/>
+<part name="FRAME1" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="FRAME_A_L" device="" value="frame"/>
+<part name="J1" library="SparkFun-Connectors" deviceset="CONN_08" device="&quot;" value="OBD_CONN"/>
+<part name="J2" library="SparkFun-Connectors" deviceset="CONN_02" device="POLAR" value="SUPPLY"/>
 <part name="P+8" library="SparkFun" deviceset="VCC" device="" value="VBAT"/>
 <part name="GND9" library="SparkFun" deviceset="GND" device=""/>
 <part name="LED2" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="LED" device="3MM"/>
@@ -6103,8 +6105,7 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <sheets>
 <sheet>
 <plain>
-<text x="294.64" y="71.12" size="1.778" layer="91" rot="R90">ADXL345 Breakout Board
-</text>
+<text x="231.14" y="53.34" size="2.1844" layer="94">ECE 491 Group 7 Vehicle Immobilizer Prototype Board Schematic</text>
 </plain>
 <instances>
 <instance part="JP1" gate="A" x="287.02" y="83.82" smashed="yes">
@@ -6254,9 +6255,6 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <instance part="P+7" gate="1" x="185.42" y="195.58" smashed="yes">
 <attribute name="VALUE" x="185.42" y="198.12" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="SUPPLY1" gate="G$1" x="182.88" y="134.62" smashed="yes">
-<attribute name="VALUE" x="180.34" y="139.446" size="1.778" layer="96" rot="R180" align="bottom-center"/>
-</instance>
 <instance part="SUPPLY4" gate="G$1" x="271.78" y="187.96" smashed="yes">
 <attribute name="VALUE" x="269.24" y="192.786" size="1.778" layer="96" rot="R180" align="bottom-center"/>
 </instance>
@@ -6306,7 +6304,7 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <busses>
 </busses>
 <nets>
-<net name="GND" class="0">
+<net name="GND" class="1">
 <segment>
 <pinref part="JP1" gate="A" pin="3"/>
 <pinref part="U$6" gate="G$1" pin="GND"/>
@@ -6419,7 +6417,7 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <label x="83.82" y="121.92" size="1.4224" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="+5V" class="0">
+<net name="+5V" class="1">
 <segment>
 <wire x1="147.32" y1="127" x2="147.32" y2="144.78" width="0.1524" layer="91"/>
 <pinref part="P+1" gate="1" pin="+5V"/>
@@ -6553,26 +6551,13 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <wire x1="254" y1="83.82" x2="248.92" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="VBAT" class="0">
+<net name="VBAT" class="1">
 <segment>
 <wire x1="254" y1="99.06" x2="254" y2="93.98" width="0.1524" layer="91"/>
 <pinref part="P+30" gate="1" pin="VCC"/>
 <pinref part="J1" gate="G$1" pin="8"/>
 <wire x1="254" y1="93.98" x2="248.92" y2="93.98" width="0.1524" layer="91"/>
 </segment>
-</net>
-<net name="N$4" class="0">
-<segment>
-<wire x1="134.62" y1="177.8" x2="142.24" y2="177.8" width="0.1524" layer="91"/>
-<pinref part="IC2" gate="A" pin="OUT"/>
-<pinref part="D1" gate="G$1" pin="C"/>
-<wire x1="142.24" y1="177.8" x2="144.78" y2="177.8" width="0.1524" layer="91"/>
-<wire x1="142.24" y1="170.18" x2="142.24" y2="177.8" width="0.1524" layer="91"/>
-<junction x="142.24" y="177.8"/>
-<pinref part="L1" gate="G$1" pin="1"/>
-</segment>
-</net>
-<net name="VCC" class="0">
 <segment>
 <wire x1="111.76" y1="182.88" x2="91.44" y2="182.88" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="182.88" x2="83.82" y2="182.88" width="0.1524" layer="91"/>
@@ -6589,19 +6574,18 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <pinref part="P+8" gate="1" pin="VCC"/>
 </segment>
 </net>
-<net name="3.3V" class="0">
+<net name="N$4" class="0">
 <segment>
-<pinref part="R2" gate="G$1" pin="2"/>
-<wire x1="182.88" y1="129.54" x2="182.88" y2="132.08" width="0.1524" layer="91"/>
-<pinref part="SUPPLY2" gate="G$1" pin="3.3V"/>
-<wire x1="182.88" y1="132.08" x2="182.88" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="132.08" x2="190.5" y2="132.08" width="0.1524" layer="91"/>
-<junction x="182.88" y="132.08"/>
-<pinref part="Q1" gate="NMOS" pin="G"/>
-<wire x1="190.5" y1="132.08" x2="190.5" y2="119.38" width="0.1524" layer="91"/>
-<pinref part="SUPPLY1" gate="G$1" pin="3.3V"/>
-<junction x="182.88" y="134.62"/>
+<wire x1="134.62" y1="177.8" x2="142.24" y2="177.8" width="0.1524" layer="91"/>
+<pinref part="IC2" gate="A" pin="OUT"/>
+<pinref part="D1" gate="G$1" pin="C"/>
+<wire x1="142.24" y1="177.8" x2="144.78" y2="177.8" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="170.18" x2="142.24" y2="177.8" width="0.1524" layer="91"/>
+<junction x="142.24" y="177.8"/>
+<pinref part="L1" gate="G$1" pin="1"/>
 </segment>
+</net>
+<net name="3.3V" class="0">
 <segment>
 <pinref part="R4" gate="G$1" pin="2"/>
 <wire x1="182.88" y1="88.9" x2="182.88" y2="91.44" width="0.1524" layer="91"/>
@@ -6624,6 +6608,16 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <pinref part="L2" gate="G$1" pin="2"/>
 <pinref part="C3" gate="G$1" pin="+"/>
 <pinref part="SUPPLY4" gate="G$1" pin="3.3V"/>
+</segment>
+<segment>
+<pinref part="R2" gate="G$1" pin="2"/>
+<wire x1="182.88" y1="129.54" x2="182.88" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="132.08" x2="190.5" y2="132.08" width="0.1524" layer="91"/>
+<pinref part="Q1" gate="NMOS" pin="G"/>
+<wire x1="190.5" y1="132.08" x2="190.5" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="SUPPLY2" gate="G$1" pin="3.3V"/>
+<wire x1="182.88" y1="134.62" x2="182.88" y2="132.08" width="0.1524" layer="91"/>
+<junction x="182.88" y="132.08"/>
 </segment>
 </net>
 <net name="TX_5V" class="0">
@@ -6713,13 +6707,38 @@ This footprint was designed to help hold the alignment of a through-hole compone
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="102,1,139.7,127,5V0,+5V,,,,"/>
+<approved hash="102,1,254,99.06,VCC,VBAT,,,,"/>
+<approved hash="102,1,83.82,193.04,VCC,VBAT,,,,"/>
+<approved hash="102,1,276.86,152.4,VCC,VBAT,,,,"/>
+<approved hash="201,1,139.7,127,5V0,+5V\, 5V0,,,,"/>
+<approved hash="104,1,111.76,182.88,IC2,VIN,VBAT,,,"/>
+<approved hash="104,1,213.36,182.88,IC1,VIN,+5V,,,"/>
+<approved hash="117,1,91.44,127,3V3@1,,,,,"/>
+<approved hash="117,1,91.44,106.68,3V3@2,,,,,"/>
+<approved hash="117,1,139.7,124.46,5V0@2,,,,,"/>
+<approved hash="106,1,248.92,88.9,CAN_HI,,,,,"/>
+<approved hash="106,1,248.92,91.44,CAN_LO,,,,,"/>
+<approved hash="117,1,91.44,116.84,GND@1,,,,,"/>
+<approved hash="117,1,91.44,96.52,GND@2,,,,,"/>
+<approved hash="117,1,91.44,78.74,GND@3,,,,,"/>
+<approved hash="117,1,139.7,111.76,GND@4,,,,,"/>
+<approved hash="117,1,139.7,104.14,GND@5,,,,,"/>
+<approved hash="117,1,139.7,91.44,GND@6,,,,,"/>
+<approved hash="117,1,139.7,121.92,GND@8,,,,,"/>
+<approved hash="106,1,248.92,81.28,J1850BUS+,,,,,"/>
+<approved hash="106,1,248.92,78.74,J1850BUS-,,,,,"/>
+<approved hash="106,1,248.92,86.36,K-LINE,,,,,"/>
+<approved hash="106,1,248.92,83.82,L-LINE,,,,,"/>
+<approved hash="106,1,139.7,116.84,RX3V3,,,,,"/>
+<approved hash="113,1,162.882,140.97,LED1,,,,,"/>
+<approved hash="113,1,68.9017,82.55,LED2,,,,,"/>
+<approved hash="113,1,79.0617,82.55,LED3,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 <compatibility>
-<note version="6.3" minversion="6.2.2" severity="warning">
-Since Version 6.2.2 text objects can contain more than one line,
-which will not be processed correctly with this version.
-</note>
 <note version="8.2" severity="warning">
 Since Version 8.2, EAGLE supports online libraries. The ids
 of those online libraries will not be understood (or retained)

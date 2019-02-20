@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "40669295174",
+    "firebase_url": "https://vehicle-immobilizer.firebaseio.com",
+    "project_id": "vehicle-immobilizer",
+    "storage_bucket": "vehicle-immobilizer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40669295174:android:942747b0f0803be9",
+        "android_client_info": {
+          "package_name": "com.example.immobilizer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "40669295174-ijomq6att9805o48k46e02v9m32mlikr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.immobilizer",
+            "certificate_hash": "2d8a330ef57bd058debb99f668b785d02a9c6c42"
+          }
+        },
+        {
+          "client_id": "40669295174-r3dr3p35bejj9drrqqiqk119scpmohu8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDNh7PMUIRHi061P0sg30i3F4N5_kmsGk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "40669295174-r3dr3p35bejj9drrqqiqk119scpmohu8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "40669295174-udttjbr427h0arh7cso1udln7hll9doa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.firebase.vehicle-immobilizer"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
