@@ -6039,7 +6039,7 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <variantdefs>
 </variantdefs>
 <classes>
-<class number="0" name="default" width="0.3048" drill="0.508">
+<class number="0" name="default" width="0.508" drill="0.508">
 <clearance class="0" value="0.3048"/>
 </class>
 <class number="1" name="power" width="1.27" drill="0.508">
@@ -6585,7 +6585,7 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <pinref part="L1" gate="G$1" pin="1"/>
 </segment>
 </net>
-<net name="3.3V" class="0">
+<net name="3.3V" class="1">
 <segment>
 <pinref part="R4" gate="G$1" pin="2"/>
 <wire x1="182.88" y1="88.9" x2="182.88" y2="91.44" width="0.1524" layer="91"/>
