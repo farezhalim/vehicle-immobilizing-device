@@ -33,7 +33,7 @@ with open("/home/pi/data.csv", "a") as log:
 		x, y, z = accelerometer.read()
 		print('X={0}, Y={1}, Z={2}'.format(x,y,z))
 		log.write("{0},{1},{2},{3}\n".format(str(now),str(x),str(y),str(z)))
-		time.sleep(0.02)
+		time.sleep(delay)
 
 ## loop that runs for a specific duration
 for i in range(duration/delay):
@@ -45,6 +45,6 @@ for i in range(duration/delay):
     file.write(str(now)+","+str(x)+","+str(y)+","+str(z)+"\n")
     file.flush()
 
-    time.sleep(0.02)
+    time.sleep(delay)
 
 file.close()

@@ -7285,8 +7285,11 @@ RJ45 Jack connectors&lt;br&gt;
 <variantdefs>
 </variantdefs>
 <classes>
-<class number="0" name="default" width="0.3048" drill="0.508">
+<class number="0" name="default" width="0.762" drill="0.508">
 <clearance class="0" value="0.3048"/>
+</class>
+<class number="1" name="power" width="1.27" drill="0.508">
+<clearance class="1" value="0.508"/>
 </class>
 </classes>
 <parts>
@@ -7492,7 +7495,7 @@ RJ45 Jack connectors&lt;br&gt;
 <junction x="129.54" y="73.66"/>
 </segment>
 </net>
-<net name="GND" class="0">
+<net name="GND" class="1">
 <segment>
 <pinref part="GND" gate="1" pin="GND"/>
 <pinref part="C2" gate="G$1" pin="2"/>
@@ -7530,7 +7533,7 @@ RJ45 Jack connectors&lt;br&gt;
 <wire x1="157.48" y1="144.78" x2="157.48" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="VCC" class="0">
+<net name="VCC" class="1">
 <segment>
 <pinref part="R1" gate="G$1" pin="2"/>
 <wire x1="144.78" y1="167.64" x2="144.78" y2="180.34" width="0.1524" layer="91"/>
