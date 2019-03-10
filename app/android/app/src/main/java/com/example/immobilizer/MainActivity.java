@@ -10,12 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
          // FirebaseUser currentUser = mAuth.getCurrentUser();
-         // updateUI(currentUser);
+//          updateUI(currentUser);
     }
 
 //    private void updateUI(FirebaseUser currentUser) {
@@ -43,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         emailAddress = findViewById(R.id.emailAddressEditText);
         password = findViewById(R.id.passwordEditText);
-        setContentView(R.layout.activity_main);
         signInButton = findViewById(R.id.signInButton);
         signInProgress = findViewById(R.id.signInProgress);
         signInProgress.setVisibility(View.INVISIBLE);
@@ -56,41 +54,43 @@ public class MainActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //signInProgress.setVisibility(View.VISIBLE);
-                //signInButton.setVisibility(View.INVISIBLE );
-
+                signInProgress.setVisibility(View.VISIBLE);
+                signInButton.setVisibility(View.INVISIBLE );
                 Log.d("btn", "sign in button clicked");
 
-
-
-
-                final String email = emailAddress.getText().toString();
-                final String pass = password.getText().toString();
+                String email = emailAddress.getText().toString();
+                String pass = password.getText().toString();
                 if (email.isEmpty() || pass.isEmpty()) {
-                    // showMessage("One of the required fields is empty");
+                    showMessage("One of the required fields is empty");
                     Log.d("btn", "empty fields");
+
+                    signInProgress.setVisibility(View.INVISIBLE);
+                    signInButton.setVisibility(View.VISIBLE );
+
                 } else {
                     signIn(email,pass);
                 }
-
-
 
             }
         });
 
     }
 
+
+
     private void signIn(String email, String pass) {
         mAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    //signInProgress.setVisibility(View.INVISIBLE);
-                    //signInButton.setVisibility(View.VISIBLE);
+                    signInProgress.setVisibility(View.INVISIBLE);
+                    signInButton.setVisibility(View.VISIBLE);
                     updateUI();
                 } else {
-                    // showMessage(task.getException().getMessage());
+                    showMessage(task.getException().getMessage());
                     Log.d("btn", "invalid");
+                    signInProgress.setVisibility(View.INVISIBLE);
+                    signInButton.setVisibility(View.VISIBLE );
                 }
             }
         });
