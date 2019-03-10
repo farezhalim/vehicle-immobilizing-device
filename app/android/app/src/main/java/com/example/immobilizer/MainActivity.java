@@ -63,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 if (email.isEmpty() || pass.isEmpty()) {
                     showMessage("One of the required fields is empty");
                     Log.d("btn", "empty fields");
+
+                    signInProgress.setVisibility(View.INVISIBLE);
+                    signInButton.setVisibility(View.VISIBLE );
+
                 } else {
                     signIn(email,pass);
                 }
@@ -71,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
 
     private void signIn(String email, String pass) {
         mAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -83,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     showMessage(task.getException().getMessage());
                     Log.d("btn", "invalid");
+                    signInProgress.setVisibility(View.INVISIBLE);
+                    signInButton.setVisibility(View.VISIBLE );
                 }
             }
         });
