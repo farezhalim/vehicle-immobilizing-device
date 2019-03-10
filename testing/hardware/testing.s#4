@@ -7285,11 +7285,8 @@ RJ45 Jack connectors&lt;br&gt;
 <variantdefs>
 </variantdefs>
 <classes>
-<class number="0" name="default" width="0.762" drill="0.508">
+<class number="0" name="default" width="0.3048" drill="0.508">
 <clearance class="0" value="0.3048"/>
-</class>
-<class number="1" name="power" width="1.27" drill="0.508">
-<clearance class="1" value="0.508"/>
 </class>
 </classes>
 <parts>
@@ -7317,10 +7314,10 @@ RJ45 Jack connectors&lt;br&gt;
 <part name="P+4" library="SparkFun" deviceset="VCC" device=""/>
 <part name="P+5" library="SparkFun" deviceset="VCC" device=""/>
 <part name="GND4" library="SparkFun" deviceset="GND" device=""/>
-<part name="X1" library="con-wago-500" deviceset="W237-102" device="" value="POWER"/>
-<part name="X2" library="con-wago-500" deviceset="W237-102" device="" value="CAN_HI_LO"/>
-<part name="J1" library="con-amp" deviceset="MTA05-156" device="" value="SPI_COMM"/>
-<part name="FRAME1" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="FRAME_A_L" device="" value="frame"/>
+<part name="X1" library="con-wago-500" deviceset="W237-102" device=""/>
+<part name="X2" library="con-wago-500" deviceset="W237-102" device=""/>
+<part name="J1" library="con-amp" deviceset="MTA05-156" device=""/>
+<part name="FRAME1" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="FRAME_A_L" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -7425,7 +7422,7 @@ RJ45 Jack connectors&lt;br&gt;
 <attribute name="NAME" x="254" y="131.191" size="1.778" layer="95"/>
 </instance>
 <instance part="X2" gate="-2" x="254" y="121.92" smashed="yes" rot="R180">
-<attribute name="VALUE" x="254" y="117.983" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="256.54" y="125.603" size="1.778" layer="96" rot="R180"/>
 <attribute name="NAME" x="254" y="121.031" size="1.778" layer="95"/>
 </instance>
 <instance part="J1" gate="G$1" x="167.64" y="25.4" smashed="yes" rot="R180">
@@ -7495,7 +7492,7 @@ RJ45 Jack connectors&lt;br&gt;
 <junction x="129.54" y="73.66"/>
 </segment>
 </net>
-<net name="GND" class="1">
+<net name="GND" class="0">
 <segment>
 <pinref part="GND" gate="1" pin="GND"/>
 <pinref part="C2" gate="G$1" pin="2"/>
@@ -7512,11 +7509,11 @@ RJ45 Jack connectors&lt;br&gt;
 <wire x1="88.9" y1="99.06" x2="81.28" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="99.06" x2="71.12" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="99.06" x2="71.12" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="20.32" y1="116.84" x2="22.86" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="116.84" x2="81.28" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="116.84" x2="81.28" y2="99.06" width="0.1524" layer="91"/>
 <junction x="81.28" y="99.06"/>
 <pinref part="X1" gate="-2" pin="KL"/>
-<wire x1="20.32" y1="116.84" x2="22.86" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="22.86" y1="116.84" x2="81.28" y2="116.84" width="0.1524" layer="91"/>
 <junction x="22.86" y="116.84"/>
 </segment>
 <segment>
@@ -7533,7 +7530,7 @@ RJ45 Jack connectors&lt;br&gt;
 <wire x1="157.48" y1="144.78" x2="157.48" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="VCC" class="1">
+<net name="VCC" class="0">
 <segment>
 <pinref part="R1" gate="G$1" pin="2"/>
 <wire x1="144.78" y1="167.64" x2="144.78" y2="180.34" width="0.1524" layer="91"/>
@@ -7689,23 +7686,6 @@ RJ45 Jack connectors&lt;br&gt;
 </nets>
 </sheet>
 </sheets>
-<errors>
-<approved hash="104,1,88.9,132.08,CAN_CONTRL,VDD,VCC,,,"/>
-<approved hash="202,1,88.9,124.46,CAN_CONTRL,~TX0RTS,,,,"/>
-<approved hash="202,1,88.9,121.92,CAN_CONTRL,~TX1RTS,,,,"/>
-<approved hash="202,1,88.9,119.38,CAN_CONTRL,~TX2RTS,,,,"/>
-<approved hash="104,1,88.9,99.06,CAN_CONTRL,VSS,GND,,,"/>
-<approved hash="104,1,175.26,137.16,CAN_TRANS,VDD,VCC,,,"/>
-<approved hash="104,1,175.26,124.46,CAN_TRANS,VSS,GND,,,"/>
-<approved hash="113,1,160.342,95.25,LED1,,,,,"/>
-<approved hash="113,1,145.102,143.51,LED2,,,,,"/>
-<approved hash="113,1,231.462,153.67,LED3,,,,,"/>
-<approved hash="113,1,111.76,74.4957,Q1,,,,,"/>
-<approved hash="113,1,19.496,121.92,X1,,,,,"/>
-<approved hash="113,1,252.284,132.08,X2,,,,,"/>
-<approved hash="113,1,161.174,27.5488,J1,,,,,"/>
-<approved hash="113,1,139.596,107.846,FRAME1,,,,,"/>
-</errors>
 </schematic>
 </drawing>
 <compatibility>

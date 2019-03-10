@@ -21,11 +21,13 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);   //to communicate with Serial monitor
   pinMode(LEDR, OUTPUT);
-  pinMode(LEDG, OUTPUT);
+  pinMode(LEDG, OUTPUT); 
 //tries to initialize, if failed --> it will loop here for ever
 START_INIT:
 
-    if(CAN_OK == CAN.begin(CAN_500KBPS))      //setting CAN baud rate to 500Kbps
+//CAN_125KBPS
+    //if(CAN_OK == CAN.begin(CAN_500KBPS))      //setting CAN baud rate to 500Kbps
+    if(CAN_OK == CAN.begin(CAN_125KBPS))      //setting CAN baud rate to 500Kbps
     {
         Serial.println("CAN BUS Shield init ok!");
     }
@@ -40,7 +42,7 @@ START_INIT:
 
 //Initialize speed to 3 kmph
 unsigned char speed = 3;
-unsigned char stmp[8] = {speed, 0x01, 0xFF, 0xEE, 0xAA, 0x00, 0x00, 0x00};
+unsigned char stmp[8] = {speed, 0x01, 0xFF, 0xEE, 0xAA, 0x00, 0x00, 0x03};
                         //{speed in kph, state, 6 bytes unused}
 
 void loop() {
@@ -53,7 +55,7 @@ void loop() {
 
     stmp[0] = speed;
 
-    CAN.sendMsgBuf(0xF1, 0, 8, stmp);
+    CAN.sendMsgBuf(0x2F1, 0, 8, stmp);
     delay(500);
     Serial.println(speed);
     if (speed > 0) {
