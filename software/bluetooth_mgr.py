@@ -1,6 +1,7 @@
 import zmq
 import os
 import time
+import filecmp
 
 def main():
 	context = zmq.Context()
@@ -20,8 +21,7 @@ def main():
 		if contents == "Immobilized"
 			os.system("sudo systemctl start bluetooth")
 			os.system("sudo systemctl start obexpush")
-			os.system("./bluetooth")
-
+			os.system("~/Desktop/bluetooth_ctl_mgr.sh")
 		
 		if contents == "Detecting"
 			os.system("sudo systemctl stop bluetooth")
@@ -30,7 +30,16 @@ def main():
 		if contents == "Disabled"
 			os.system("sudo systemctl stop bluetooth")
 			os.system("sudo systemctl stop obexpush")
-
+			
+			bool recieveFile = false
+			bool matchToFile = false
+			
+			while (not recieveFile) and (not matchToFile):
+				recieveFile = os.path.isfile('/bluetooth/key.txt')
+				matchToFile = filecmp.cmp('/bluetooth/good.txt','/key.txt')
+			
+			os.system("sudo rm /bluetooth/key.txt")
+				
 		
 	sub.close()
 	context.term()

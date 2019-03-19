@@ -1,7 +1,7 @@
-import time
 import Adafruit_ADXL345
 import smbus
 import csv
+import time
 
 #Definitions
 _ADXL345_DEFAULT_ADDRESS = 0x53 # Assumes ALT address pin low
@@ -87,13 +87,28 @@ def data_range(val):
 data_rate(DataRate.RATE_50_HZ)
 data_range(Range.RANGE_8_G)
 
-with open("/home/pi/Desktop/data.csv","a") as log:
-	write = csv.writer(log, delimiter=',',quotechar='"', quoting=csv.QUOTE_MINIMAL)
-	while True:
-		x,y,z = accel.read()
-		x = round(x*17.2*10**-3, 4)
-		y = round(y*17.2*10**-3, 4)
-		z = round(z*17.2*10**-3, 5)
-		print('X={0} G, Y={1} G, Z={2} G'.format(x,y,z))
-		write.writerow([x,y,z])
-		time.sleep(0.5)
+xAxisList = [0]*25
+yAxisList = [0]*25
+
+while True:
+	x,y,z = accel.read()
+	x = round(x*17.2*10**-3, 5)
+	y = round(y*17.2*10**-3, 5)
+	z = round(z*17.2*10**-3, 5)
+	print('X={0} G, Y={1} G, Z={2} G'.format(x,y,z))
+	
+	xAxisList.pop(24)
+	yAxisList.pop(24)
+	xAxisList.insert(0,x) 
+	yAxisList.insert(0,y)
+	
+	yDiff = yAxisList[24] -yAxisList[0]
+	xDiff = xAxisList[24] -xAxisList[0]
+	
+	if yDiff > 2 or xDiff > 2:
+		print('Accident has been detected. RIP.')
+		break
+	
+print('Accident has been detected. RIP.')
+
+	
