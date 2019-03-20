@@ -145,6 +145,7 @@
 <text x="0.762" y="32.639" size="1.016" layer="21" font="vector" ratio="15" rot="R270">POWER</text>
 <dimension x1="68.58" y1="0" x2="0" y2="0" x3="34.29" y3="-5.08" textsize="1.778" layer="1"/>
 <dimension x1="68.58" y1="43.18" x2="68.58" y2="0" x3="74.93" y3="21.59" textsize="1.778" layer="1"/>
+<dimension x1="46.99" y1="30.48" x2="46.99" y2="2.54" x3="86.36" y3="16.51" textsize="1.778" layer="1"/>
 </plain>
 <libraries>
 <library name="_stn_rcl">
