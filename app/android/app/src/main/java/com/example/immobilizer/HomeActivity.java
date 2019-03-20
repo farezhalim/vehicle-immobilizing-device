@@ -8,9 +8,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -27,7 +32,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.nio.charset.Charset;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -35,7 +43,7 @@ import java.util.UUID;
 
 public class HomeActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private static final String TAG = "bluetooth-function";
-    private static final String FILE_NAME = "key.txt";
+    static final String FILE_NAME = "key.txt";
     BluetoothAdapter mBluetoothAdapter;
     Button button_toggleBT;
     Button button_toggleDiscoverable;
@@ -199,7 +207,6 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
         button_toggleDiscoverable = findViewById(R.id.button_toggleDiscoverable);
         textView_key = findViewById(R.id.textView_key);
 
-
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
         mBTDevices = new ArrayList<>();
@@ -223,11 +230,13 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
         button_startConnection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // startConnection();
+                startConnection();
 
-                // String deviceAddress = mBTDevice.getAddress();
-                String deviceAddress = "value";
-                getUnlock(HomeActivity.this,deviceAddress);
+                // get the key
+                String deviceAddress = mBTDevice.getAddress();
+                key = getUnlock(deviceAddress);
+                textView_key.setText(key);
+
             }
 
 
@@ -238,8 +247,36 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View v) {
 
-                byte[] bytes = textView_key.getText().toString().getBytes(Charset.defaultCharset());
-                mBluetoothConnection.write(bytes);
+                // get permissions
+                if (ActivityCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(HomeActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                }
+
+
+                File file = new File (Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), FILE_NAME);
+                try {
+                    FileOutputStream f = new FileOutputStream(file);
+                    //f.write(textView_key.getText().toString().getBytes());
+                    f.write(key.getBytes());
+                    f.close();
+                    showMessage("File stored on Downloads folder as " + FILE_NAME + "with key " + key);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                    Log.i(TAG, "******* File not found. Did you" +
+                            " add a WRITE_EXTERNAL_STORAGE permission to the   manifest?");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+                StrictMode.setVmPolicy(builder.build());
+
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_SEND);
+                intent.setType("text/*");
+
+                intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+                startActivity(intent);
 
             }
         });
@@ -247,9 +284,8 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-
     // create method for starting connection
-    // *** remember the conncction will fail and app will crash if you haven't paired first
+    // *** remember the connection will fail and app will crash if you haven't paired first
     public void startConnection(){
         startBTConnection(mBTDevice,MY_UUID_INSECURE);
     }
@@ -259,18 +295,15 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
      */
     public void startBTConnection(BluetoothDevice device, UUID uuid){
         Log.d(TAG, "startBTConnection: Initializing RFCOM Bluetooth Connection.");
-
         mBluetoothConnection.startClient(device,uuid);
     }
 
     private void toggleBluetooth() {
         if (mBluetoothAdapter == null) {
-            Log.d("bluetooth", "does not have bluetooth capabilities");
             showMessage("Does not have bluetooth capabilities");
         }
 
         if (!mBluetoothAdapter.isEnabled()){
-            Log.d("bluetooth", "enabling bluetooth");
             Intent enableBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivity(enableBTIntent);
 
@@ -279,26 +312,10 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
 
             showMessage("Bluetooth enabled");
         } else {
-            /**
-
-            // following code is for learning purposes; the actual app will inform the user that
-            // bluetooth is already enabled
-
-
-            Log.d("bluetooth", "disabling bluetooth");
-            mBluetoothAdapter.disable();
-            IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-            registerReceiver(mBroadcastReceiver1, BTIntent);
-            showMessage("Bluetooth disabled");
-
-            */
-
             showMessage("Bluetooth is already enabled");
-
         }
 
     }
-
 
     private void showMessage(String s) {
         Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
@@ -374,75 +391,45 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
 
         //first cancel discovery because its very memory intensive.
-//        mBluetoothAdapter.cancelDiscovery();
-//
-//        Log.d(TAG, "onItemClick: You Clicked on a device.");
-//        String deviceName = mBTDevices.get(i).getName();
-//        String deviceAddress = mBTDevices.get(i).getAddress();
-//
-//        Log.d(TAG, "onItemClick: deviceName = " + deviceName);
-//        Log.d(TAG, "onItemClick: deviceAddress = " + deviceAddress);
-//
-//        //create the bond.
-//        //NOTE: Requires API 17+ - JellyBean
-//        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2){
-//            Log.d(TAG, "Trying to pair with " + deviceName);
-//            mBTDevices.get(i).createBond();
-//
-//            mBTDevice = mBTDevices.get(i);
-//            mBluetoothConnection = new BluetoothConnectionService(HomeActivity.this);
-//        }
+        mBluetoothAdapter.cancelDiscovery();
 
-        // debug purposes only
-        String deviceAddress = "value";
-        getUnlock(HomeActivity.this,deviceAddress);
+        String deviceName = mBTDevices.get(i).getName();
+        String deviceAddress = mBTDevices.get(i).getAddress();
 
+        //create the bond.
+        //NOTE: Requires API 17+ - JellyBean
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2){
+            Log.d(TAG, "Trying to pair with " + deviceName);
+            mBTDevices.get(i).createBond();
+
+            mBTDevice = mBTDevices.get(i);
+            mBluetoothConnection = new BluetoothConnectionService(HomeActivity.this);
+        }
 
     }
+
     /**
-     * getUnlock() will retreive disabling key from Firebase and
-     * save the text on a .txt file in internal storage
-     * and display on the text view
+     * getUnlock() will retreive disabling key from Firebase
      * */
-    public void getUnlock(Context context, String address) {
+    public String getUnlock(String address) {
         // Grab the correct key based on bluetooth connection address
-        Log.d(TAG, "getUnlock: function called");
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("devices");
-        Log.d(TAG, "getUnlock: firebase connection established");
 
         // Read from the database
         myRef.orderByChild("MAC").equalTo(address).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                     key = snapshot.child("unlockPass").getValue().toString();
                 }
-                Log.d(TAG, "onDataChange: the key is " + key);
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError databaseError) { }
         });
 
-
-        textView_key.setText(key);
-
-
-//        String fileContents = key;
-//        FileOutputStream outputStream;
-//
-//        try {
-//            outputStream = openFileOutput(FILE_NAME, Context.MODE_PRIVATE);
-//            outputStream.write(fileContents.getBytes());
-//            outputStream.close();
-//            Log.d(TAG, "getKey: saved to " + getFilesDir() + "/" + FILE_NAME);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        return key;
 
     }
 
