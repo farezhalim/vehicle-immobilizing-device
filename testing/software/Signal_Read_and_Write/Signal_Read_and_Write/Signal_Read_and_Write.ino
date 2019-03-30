@@ -111,15 +111,7 @@ void loop()
           digitalWrite(LEDR, HIGH);
           digitalWrite(LEDG, LOW);
         }
-        else
-        {
-          //vehicle NOT immobilized, GREEN light ON
-          digitalWrite(LEDG, HIGH);
-          digitalWrite(LEDR, LOW);
-          //============================================//   
-        }
-
-        if (BuildMessage=="2,1,204,0,0,0,0,0,")          //Lookout for 204 (0xCC) as the de-immobilization packet
+        else if (BuildMessage=="2,1,204,0,0,0,0,0,")          //Lookout for 204 (0xCC) as the de-immobilization packet
         {
           //LED Block Code
           //============================================//
@@ -127,13 +119,15 @@ void loop()
           digitalWrite(LEDR, LOW);
           digitalWrite(LEDG, HIGH);
         }
-        else
-        {
-          //vehicle immobilized, RED light ON
-          digitalWrite(LEDG, LOW);
-          digitalWrite(LEDR, HIGH);
-          //============================================//   
-        }
+//        else
+//        {
+//          //vehicle NOT immobilized, GREEN light ON
+//          digitalWrite(LEDG, HIGH);
+//          digitalWrite(LEDR, LOW);
+//          //============================================//   
+//        }
+
+
         BuildMessage="";      //Resets the packet to nothing
     }
 }
