@@ -13,6 +13,6 @@ sleep 1
 
 send "agent -NoInputNoOutput"
 
-sleep 5
+sleep 2
 
 expect eof

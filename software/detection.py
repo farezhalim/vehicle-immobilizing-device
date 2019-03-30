@@ -1,3 +1,4 @@
+import zmq
 import Adafruit_ADXL345
 import smbus
 import csv
@@ -75,39 +76,78 @@ bus = smbus.SMBus(1)
 accel = Adafruit_ADXL345.ADXL345()
 
 def data_rate(val):
+	#Set Data Rate for Accelerometer
 	bus.write_byte_data(_ADXL345_DEFAULT_ADDRESS,_REG_BW_RATE,val)
 	data_rate_readBack = bus.read_byte_data(_ADXL345_DEFAULT_ADDRESS,_REG_BW_RATE)
 	return data_rate_readBack
 	
 def data_range(val):
+	#Set Data Range for Accelermeter
 	bus.write_byte_data(_ADXL345_DEFAULT_ADDRESS,_REG_DATA_FORMAT,val)
 	data_rate_readBack = bus.read_byte_data(_ADXL345_DEFAULT_ADDRESS,_REG_DATA_FORMAT)
 	return data_rate_readBack
 
-data_rate(DataRate.RATE_50_HZ)
-data_range(Range.RANGE_8_G)
+def detectAccident():
+	#Query for acceleration values (ADXL Digital MEMS Accelerometer) + Find if accident has been detected
+	xAxisList = [0]*50 #Only store X-axis values for the past 0.5 second
+	yAxisList = [0]*50
+	accident = False
+	while True:
+		x,y,z = accel.read()
+		#Convert to G Values
+		x = round(x*17.2*10**-3, 5)
+		y = round(y*17.2*10**-3, 5)
+		z = round(z*17.2*10**-3, 5)
+		print('X={0} G, Y={1} G, Z={2} G'.format(x,y,z))
+		
+		xAxisList.pop(24)
+		yAxisList.pop(24)
+		xAxisList.insert(0,x) 
+		yAxisList.insert(0,y)
+		
+		yDiff = yAxisList[24] -yAxisList[0]
+		xDiff = xAxisList[24] -xAxisList[0]
+		
+		if yDiff > 2 or xDiff > 2: #Determine if accident has been detected
+			print('Accident has been detected. RIP.')
+			accident = True
+			return accident
+			break
 
-xAxisList = [0]*25
-yAxisList = [0]*25
+
+data_rate(DataRate.RATE_100_HZ) #set sampling rate of accelerometer to  100 Hz
+data_range(Range.RANGE_8_G) #set data range of accelerometer to 8G
+
+#IPC Socket Communication Initialization
+context = zmq.Context()
+	
+sub = context.socket(zmq.SUB)
+sub.connect('tcp://127.0.0.1:5558') # 5557 to 5558
+sub.setsockopt_string(zmq.SUBSCRIBE, '')
+	
+pub = context.socket(zmq.PUB)
+pub.bind('tcp://127.0.0.1:5556')
+	
+id = 1	
 
 while True:
-	x,y,z = accel.read()
-	x = round(x*17.2*10**-3, 5)
-	y = round(y*17.2*10**-3, 5)
-	z = round(z*17.2*10**-3, 5)
-	print('X={0} G, Y={1} G, Z={2} G'.format(x,y,z))
-	
-	xAxisList.pop(24)
-	yAxisList.pop(24)
-	xAxisList.insert(0,x) 
-	yAxisList.insert(0,y)
-	
-	yDiff = yAxisList[24] -yAxisList[0]
-	xDiff = xAxisList[24] -xAxisList[0]
-	
-	if yDiff > 2 or xDiff > 2:
-		print('Accident has been detected. RIP.')
-		break
+	m_accident = detectAccident()
+	if m_accident == True:
+		print("I'M Here boolean flag true")
+		pub.send_string("Immobilized")		
+
+	contents = sub.recv()
+	if contents.decode("utf-8") == "Detecting":
+		print('I not here')
+		m_accident = detectAccident()
+		if m_accident == True:
+			pub.send_string("Immobilized")		
+		
+								
+sub.close()
+context.term()
+
+
 	
 print('Accident has been detected. RIP.')
 

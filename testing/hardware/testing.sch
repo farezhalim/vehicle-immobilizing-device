@@ -7638,12 +7638,13 @@ RJ45 Jack connectors&lt;br&gt;
 <label x="172.72" y="88.9" size="1.4224" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="N$8" class="0">
+<net name="RESET" class="0">
 <segment>
 <pinref part="CAN_CONTRL" gate="A" pin="~RESET"/>
 <pinref part="R4" gate="G$1" pin="1"/>
 <wire x1="86.36" y1="127" x2="50.8" y2="127" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="127" x2="50.8" y2="152.4" width="0.1524" layer="91"/>
+<label x="73.66" y="127" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$9" class="0">
