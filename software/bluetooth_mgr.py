@@ -3,43 +3,52 @@ import os
 import time
 import filecmp
 
-def main():
-	context = zmq.Context()
+#IPC Communication Initialization
+context = zmq.Context()
 	
-	sub = context.socket(zmq.SUB)
-	sub.connect('tcp://localhost:5556')
-	sub.setsockopt(zmq.SUBSCRIBE, '')
+sub = context.socket(zmq.SUB)
+sub.connect('tcp://127.0.0.1:5557')
+sub.setsockopt_string(zmq.SUBSCRIBE, '')
 	
-	pub = conetxt.socket(zmq.PUB)
-	pub.bind('tcp://localhost:5556')
+pub = context.socket(zmq.PUB)
+pub.bind('tcp://127.0.0.1:5558')
 	
-	id = 0
+id = 0
 	
-	while True:
-		address, context = sub.recv_multipart()
+while True:
+	contents = sub.recv()
+	print(contents)
 		
-		if contents == "Immobilized"
-			os.system("sudo systemctl start bluetooth")
-			os.system("sudo systemctl start obexpush")
-			os.system("~/Desktop/bluetooth_ctl_mgr.sh")
-		
-		if contents == "Detecting"
-			os.system("sudo systemctl stop bluetooth")
-			os.system("sudo systemctl stop obexpush")
-		
-		if contents == "Disabled"
-			os.system("sudo systemctl stop bluetooth")
-			os.system("sudo systemctl stop obexpush")
+	if contents.decode("utf-8") == "EnableBT": #Start Bluetooth recption if vehicle is in an accident
+		print("i am trying to enable bluetooth")
+		os.system("sudo systemctl start bluetooth")
+		os.system("sudo systemctl start obexpush")
+		os.system("~/Desktop/bluetooth_ctl_mgr.sh") #Enable discoverable bluetooth flag
+		recieveFile = False
+		matchToFile = False
 			
-			bool recieveFile = false
-			bool matchToFile = false
+		while (not recieveFile): #Check whether key has been recieved
+			print("waiting for file")
+			recieveFile = os.path.isfile('/bluetooth/key.txt')
 			
-			while (not recieveFile) and (not matchToFile):
-				recieveFile = os.path.isfile('/bluetooth/key.txt')
-				matchToFile = filecmp.cmp('/bluetooth/good.txt','/key.txt')
+		if recieveFile == True:
+			print("file received, comparing...")
 			
-			os.system("sudo rm /bluetooth/key.txt")
-				
+			time.sleep(5)
+			matchToFile = filecmp.cmp('/bluetooth/good.txt','/bluetooth/key.txt', shallow=False)
+			
+			print(matchToFile)
+			
+			if matchToFile == True:
+				print("file match!")
+				os.system("sudo rm /bluetooth/key.txt")
+				pub.send_string("Disabled")	
+			else:	
+				print("file did not match!")
 		
-	sub.close()
-	context.term()
+	else:
+		os.system("sudo systemctl stop bluetooth")
+		os.system("sudo systemctl stop obexpush")
+		
+sub.close()
+context.term()
