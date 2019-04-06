@@ -65,9 +65,6 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
 
     String key;
 
-
-
-
     // Create a BroadcastReceiver for ACTION_FOUND
     private final BroadcastReceiver mBroadcastReceiver1 = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {

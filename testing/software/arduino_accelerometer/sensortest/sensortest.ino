@@ -150,5 +150,5 @@ void loop(void)
   Serial.print(" "); Serial.print(event.acceleration.z); Serial.print(",  ");Serial.println("m/s^2 ");
 
   
-  //delay(500);
+ // delay(500);
 }

@@ -8314,12 +8314,33 @@ by exp-project-lbr.ulp</description>
 <text x="-2.54" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="GND" x="0" y="2.54" visible="off" length="short" direction="sup" rot="R270"/>
 </symbol>
+<symbol name="VCC/2" urn="urn:adsk.eagle:symbol:26942/1" library_version="1">
+<wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
+<wire x1="0" y1="1.778" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-1.905" x2="0" y2="1.778" width="0.254" layer="94"/>
+<text x="-2.54" y="-2.54" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+<pin name="VCC/2" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="GND" urn="urn:adsk.eagle:component:26954/1" prefix="GND" library_version="1">
 <description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
 <gates>
 <gate name="1" symbol="GND" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="VCC/2" urn="urn:adsk.eagle:component:26972/1" prefix="P+" library_version="1">
+<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
+<gates>
+<gate name="G$1" symbol="VCC/2" x="0" y="0"/>
 </gates>
 <devices>
 <device name="">
@@ -8514,7 +8535,11 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 <variantdefs>
 </variantdefs>
 <classes>
-<class number="0" name="default" width="0" drill="0">
+<class number="0" name="default" width="0.1778" drill="0.508">
+<clearance class="0" value="0.3048"/>
+</class>
+<class number="1" name="pwr" width="0.3048" drill="0.508">
+<clearance class="1" value="0.3048"/>
 </class>
 </classes>
 <parts>
@@ -8663,9 +8688,8 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 <part name="GND17" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND19" library="SparkFun" deviceset="GND" device=""/>
 <part name="U1" library="SparkFun" deviceset="V_REG_317" device="DPACK"/>
-<part name="5/7V5" library="SparkFun" deviceset="VCC" device="" value="5/7V"/>
 <part name="GND33" library="SparkFun" deviceset="GND" device=""/>
-<part name="P+6" library="SparkFun" deviceset="VCC" device="" value="VBAT"/>
+<part name="VBAT" library="SparkFun" deviceset="VCC" device="" value="VBAT"/>
 <part name="C8" library="SparkFun" deviceset="CAP" device="0402-CAP" value="1uF"/>
 <part name="GND35" library="SparkFun" deviceset="GND" device=""/>
 <part name="R43" library="SparkFun" deviceset="RESISTOR" device="0402-RES" value="1k"/>
@@ -8690,7 +8714,6 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 <part name="C19" library="SparkFun" deviceset="CAP" device="0402-CAP" value="470pF"/>
 <part name="GND57" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND58" library="SparkFun" deviceset="GND" device=""/>
-<part name="5/7V7" library="SparkFun" deviceset="VCC" device="" value="5/7V"/>
 <part name="C20" library="SparkFun" deviceset="CAP_POL" device="1206" value="10uF"/>
 <part name="GND59" library="SparkFun" deviceset="GND" device=""/>
 <part name="FRAME2" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="FRAME_A_L" device=""/>
@@ -8705,7 +8728,6 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 <part name="GND7" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND18" library="SparkFun" deviceset="GND" device=""/>
 <part name="5/7V1" library="SparkFun" deviceset="VCC" device="" value="5/7V"/>
-<part name="5/7V2" library="SparkFun" deviceset="VCC" device="" value="5/7V"/>
 <part name="Q7" library="SparkFun" deviceset="MOSFET-PCHANNEL" device="" value="ZXMP6A13FTA"/>
 <part name="OBD_CONN" library="SparkFun-Connectors" deviceset="OBDII" device=""/>
 <part name="D5" library="SparkFun" deviceset="DIODE" device="SMA" value="MBRA140"/>
@@ -8727,6 +8749,9 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 <part name="U$21" library="microbuilder" deviceset="3.3V" device=""/>
 <part name="U$15" library="SparkFun" deviceset="5V" device=""/>
 <part name="U$20" library="SparkFun" deviceset="5V" device=""/>
+<part name="P+6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC/2" device=""/>
+<part name="P+8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC/2" device=""/>
+<part name="P+13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC/2" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9035,7 +9060,7 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 <pinref part="IC1" gate="G$1" pin="VCAP"/>
 </segment>
 </net>
-<net name="GND" class="0">
+<net name="GND" class="1">
 <segment>
 <wire x1="129.54" y1="7.62" x2="129.54" y2="5.08" width="0.1524" layer="91"/>
 <pinref part="C5" gate="G$1" pin="2"/>
@@ -9364,7 +9389,7 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 <pinref part="C7" gate="G$1" pin="1"/>
 </segment>
 </net>
-<net name="3.3V" class="0">
+<net name="3.3V" class="1">
 <segment>
 <wire x1="132.08" y1="154.94" x2="132.08" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="C1" gate="G$1" pin="1"/>
@@ -9494,7 +9519,7 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 <pinref part="R5" gate="G$1" pin="2"/>
 </segment>
 </net>
-<net name="5V" class="0">
+<net name="5V" class="1">
 <segment>
 <wire x1="111.76" y1="157.48" x2="111.76" y2="160.02" width="0.1524" layer="91"/>
 <pinref part="R1" gate="G$1" pin="2"/>
@@ -9634,7 +9659,7 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 <pinref part="R38" gate="G$1" pin="1"/>
 </segment>
 </net>
-<net name="VCC" class="0">
+<net name="VCC" class="1">
 <segment>
 <pinref part="D5" gate="G$1" pin="C"/>
 <wire x1="139.7" y1="213.36" x2="144.78" y2="213.36" width="0.1524" layer="91"/>
@@ -9970,18 +9995,18 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 <instance part="5/7V1" gate="1" x="215.9" y="111.76" smashed="yes">
 <attribute name="VALUE" x="214.884" y="115.316" size="1.778" layer="96"/>
 </instance>
-<instance part="5/7V2" gate="1" x="205.74" y="119.38" smashed="yes">
-<attribute name="VALUE" x="204.724" y="122.936" size="1.778" layer="96"/>
-</instance>
 <instance part="Q7" gate="G$1" x="215.9" y="104.14" smashed="yes" rot="MR180">
 <attribute name="NAME" x="220.726" y="106.172" size="1.778" layer="95"/>
 <attribute name="VALUE" x="220.472" y="103.378" size="1.778" layer="96"/>
+</instance>
+<instance part="P+13" gate="G$1" x="205.74" y="121.92" smashed="yes">
+<attribute name="VALUE" x="203.2" y="119.38" size="1.778" layer="96" rot="R90"/>
 </instance>
 </instances>
 <busses>
 </busses>
 <nets>
-<net name="GND" class="0">
+<net name="GND" class="1">
 <segment>
 <wire x1="111.76" y1="142.24" x2="111.76" y2="139.7" width="0.1524" layer="91"/>
 <pinref part="R16" gate="G$1" pin="1"/>
@@ -10116,7 +10141,7 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 <pinref part="R7" gate="G$1" pin="2"/>
 </segment>
 </net>
-<net name="3.3V" class="0">
+<net name="3.3V" class="1">
 <segment>
 <wire x1="119.38" y1="48.26" x2="119.38" y2="45.72" width="0.1524" layer="91"/>
 <pinref part="R9" gate="G$1" pin="2"/>
@@ -10133,7 +10158,7 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 <pinref part="P+11" gate="G$1" pin="3.3V"/>
 </segment>
 </net>
-<net name="5V" class="0">
+<net name="5V" class="1">
 <segment>
 <wire x1="134.62" y1="162.56" x2="134.62" y2="160.02" width="0.1524" layer="91"/>
 <pinref part="C11" gate="G$1" pin="1"/>
@@ -10241,7 +10266,7 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 <pinref part="Q3" gate="G$1" pin="C"/>
 </segment>
 </net>
-<net name="VBAT" class="0">
+<net name="VBAT" class="1">
 <segment>
 <wire x1="68.58" y1="50.8" x2="68.58" y2="48.26" width="0.1524" layer="91"/>
 <pinref part="P+4" gate="1" pin="VCC"/>
@@ -10370,12 +10395,7 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 <pinref part="Q6" gate="G$1" pin="G"/>
 </segment>
 </net>
-<net name="VCC" class="0">
-<segment>
-<wire x1="205.74" y1="119.38" x2="205.74" y2="116.84" width="0.1524" layer="91"/>
-<pinref part="5/7V2" gate="1" pin="VCC"/>
-<pinref part="R2" gate="G$1" pin="1"/>
-</segment>
+<net name="VCC" class="1">
 <segment>
 <wire x1="215.9" y1="111.76" x2="215.9" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="Q7" gate="G$1" pin="S"/>
@@ -10407,149 +10427,151 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 <pinref part="D1" gate="G$1" pin="A"/>
 </segment>
 </net>
+<net name="VCC/2" class="1">
+<segment>
+<pinref part="R2" gate="G$1" pin="1"/>
+<pinref part="P+13" gate="G$1" pin="VCC/2"/>
+<wire x1="205.74" y1="116.84" x2="205.74" y2="119.38" width="0.1524" layer="91"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
 <plain>
-<text x="2.54" y="86.36" size="1.778" layer="97">Selectable 5.76V or 7.71V</text>
-<text x="45.72" y="63.5" size="1.778" layer="91">CAP-868</text>
-<text x="0" y="88.9" size="5.08" layer="250" font="vector" ratio="10">VBAT to 5/7V</text>
-<text x="124.46" y="91.44" size="5.08" layer="250" font="vector" ratio="10">+3.3V Power Supply</text>
+<text x="58.42" y="96.52" size="1.778" layer="97">Selectable 5.76V or 7.71V</text>
+<text x="101.6" y="73.66" size="1.778" layer="91">CAP-868</text>
+<text x="55.88" y="99.06" size="5.08" layer="250" font="vector" ratio="10">VBAT to 5/7V</text>
+<text x="134.62" y="101.6" size="5.08" layer="250" font="vector" ratio="10">+3.3V Power Supply</text>
+<text x="137.16" y="58.42" size="5.08" layer="250" font="vector" ratio="10">+5V Power Supply</text>
 </plain>
 <instances>
-<instance part="R26" gate="G$1" x="33.02" y="63.5" smashed="yes" rot="MR270">
-<attribute name="NAME" x="31.2674" y="61.722" size="1.778" layer="95" font="vector" rot="R90"/>
-<attribute name="VALUE" x="35.052" y="61.214" size="1.778" layer="96" font="vector" rot="MR90"/>
+<instance part="R26" gate="G$1" x="88.9" y="73.66" smashed="yes" rot="MR270">
+<attribute name="NAME" x="87.1474" y="71.882" size="1.778" layer="95" font="vector" rot="R90"/>
+<attribute name="VALUE" x="90.932" y="71.374" size="1.778" layer="96" font="vector" rot="MR90"/>
 </instance>
-<instance part="R40" gate="G$1" x="22.86" y="48.26" smashed="yes" rot="MR90">
-<attribute name="NAME" x="21.1074" y="46.228" size="1.778" layer="95" font="vector" rot="R90"/>
-<attribute name="VALUE" x="24.892" y="45.974" size="1.778" layer="96" font="vector" rot="MR90"/>
+<instance part="R40" gate="G$1" x="78.74" y="58.42" smashed="yes" rot="MR90">
+<attribute name="NAME" x="76.9874" y="56.388" size="1.778" layer="95" font="vector" rot="R90"/>
+<attribute name="VALUE" x="80.772" y="56.134" size="1.778" layer="96" font="vector" rot="MR90"/>
 </instance>
-<instance part="R41" gate="G$1" x="22.86" y="33.02" smashed="yes" rot="MR90">
-<attribute name="NAME" x="25.146" y="33.2486" size="1.778" layer="95" font="vector"/>
-<attribute name="VALUE" x="25.146" y="31.75" size="1.778" layer="96" font="vector" rot="MR180"/>
+<instance part="R41" gate="G$1" x="78.74" y="43.18" smashed="yes" rot="MR90">
+<attribute name="NAME" x="81.026" y="43.4086" size="1.778" layer="95" font="vector"/>
+<attribute name="VALUE" x="81.026" y="41.91" size="1.778" layer="96" font="vector" rot="MR180"/>
 </instance>
-<instance part="PORT3" gate="G$1" x="5.08" y="33.02" smashed="yes" rot="MR0"/>
-<instance part="PORT3" gate="G$2" x="-5.08" y="33.02" smashed="yes" rot="MR0"/>
-<instance part="C6" gate="G$1" x="7.62" y="63.5" smashed="yes" rot="MR0">
-<attribute name="NAME" x="10.922" y="65.405" size="1.778" layer="95" font="vector"/>
-<attribute name="VALUE" x="10.922" y="63.881" size="1.778" layer="96" font="vector" rot="MR180"/>
+<instance part="PORT3" gate="G$1" x="60.96" y="43.18" smashed="yes" rot="MR0"/>
+<instance part="PORT3" gate="G$2" x="50.8" y="43.18" smashed="yes" rot="MR0"/>
+<instance part="C6" gate="G$1" x="63.5" y="73.66" smashed="yes" rot="MR0">
+<attribute name="NAME" x="66.802" y="75.565" size="1.778" layer="95" font="vector"/>
+<attribute name="VALUE" x="66.802" y="74.041" size="1.778" layer="96" font="vector" rot="MR180"/>
 </instance>
-<instance part="Q2" gate="G$1" x="15.24" y="33.02" smashed="yes">
-<attribute name="NAME" x="6.096" y="29.21" size="1.778" layer="95"/>
-<attribute name="VALUE" x="3.81" y="26.416" size="1.778" layer="96"/>
+<instance part="Q2" gate="G$1" x="71.12" y="43.18" smashed="yes">
+<attribute name="NAME" x="61.976" y="39.37" size="1.778" layer="95"/>
+<attribute name="VALUE" x="59.69" y="36.576" size="1.778" layer="96"/>
 </instance>
-<instance part="GND17" gate="1" x="15.24" y="22.86" smashed="yes">
-<attribute name="VALUE" x="12.7" y="20.32" size="1.778" layer="96"/>
+<instance part="GND17" gate="1" x="71.12" y="33.02" smashed="yes">
+<attribute name="VALUE" x="68.58" y="30.48" size="1.778" layer="96"/>
 </instance>
-<instance part="GND19" gate="1" x="22.86" y="22.86" smashed="yes">
-<attribute name="VALUE" x="20.32" y="20.32" size="1.778" layer="96"/>
+<instance part="GND19" gate="1" x="78.74" y="33.02" smashed="yes">
+<attribute name="VALUE" x="76.2" y="30.48" size="1.778" layer="96"/>
 </instance>
-<instance part="U1" gate="G$1" x="22.86" y="71.12" smashed="yes">
-<attribute name="NAME" x="17.78" y="78.74" size="1.778" layer="95"/>
-<attribute name="VALUE" x="17.78" y="76.2" size="1.778" layer="96"/>
+<instance part="U1" gate="G$1" x="78.74" y="81.28" smashed="yes">
+<attribute name="NAME" x="73.66" y="88.9" size="1.778" layer="95"/>
+<attribute name="VALUE" x="73.66" y="86.36" size="1.778" layer="96"/>
 </instance>
-<instance part="5/7V5" gate="1" x="43.18" y="73.66" smashed="yes">
-<attribute name="VALUE" x="42.164" y="77.216" size="1.778" layer="96"/>
+<instance part="GND33" gate="1" x="63.5" y="66.04" smashed="yes">
+<attribute name="VALUE" x="60.96" y="63.5" size="1.778" layer="96"/>
 </instance>
-<instance part="GND33" gate="1" x="7.62" y="55.88" smashed="yes">
-<attribute name="VALUE" x="5.08" y="53.34" size="1.778" layer="96"/>
+<instance part="VBAT" gate="1" x="63.5" y="83.82" smashed="yes">
+<attribute name="VALUE" x="62.484" y="87.376" size="1.778" layer="96"/>
 </instance>
-<instance part="P+6" gate="1" x="7.62" y="73.66" smashed="yes">
-<attribute name="VALUE" x="6.604" y="77.216" size="1.778" layer="96"/>
+<instance part="C8" gate="G$1" x="96.52" y="73.66" smashed="yes">
+<attribute name="NAME" x="98.044" y="76.581" size="1.778" layer="95"/>
+<attribute name="VALUE" x="98.044" y="71.501" size="1.778" layer="96"/>
 </instance>
-<instance part="C8" gate="G$1" x="40.64" y="63.5" smashed="yes">
-<attribute name="NAME" x="42.164" y="66.421" size="1.778" layer="95"/>
-<attribute name="VALUE" x="42.164" y="61.341" size="1.778" layer="96"/>
+<instance part="GND35" gate="1" x="96.52" y="66.04" smashed="yes">
+<attribute name="VALUE" x="93.98" y="63.5" size="1.778" layer="96"/>
 </instance>
-<instance part="GND35" gate="1" x="40.64" y="55.88" smashed="yes">
-<attribute name="VALUE" x="38.1" y="53.34" size="1.778" layer="96"/>
+<instance part="R43" gate="G$1" x="116.84" y="73.66" smashed="yes" rot="R90">
+<attribute name="NAME" x="115.3414" y="69.85" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="120.142" y="69.85" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="R43" gate="G$1" x="60.96" y="63.5" smashed="yes" rot="R90">
-<attribute name="NAME" x="59.4614" y="59.69" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="64.262" y="59.69" size="1.778" layer="96" rot="R90"/>
+<instance part="LED6" gate="G$1" x="116.84" y="63.5" smashed="yes">
+<attribute name="NAME" x="120.396" y="58.928" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="122.555" y="58.928" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="LED6" gate="G$1" x="60.96" y="53.34" smashed="yes">
-<attribute name="NAME" x="64.516" y="48.768" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="66.675" y="48.768" size="1.778" layer="96" rot="R90"/>
+<instance part="GND36" gate="1" x="116.84" y="53.34" smashed="yes">
+<attribute name="VALUE" x="114.3" y="50.8" size="1.778" layer="96"/>
 </instance>
-<instance part="GND36" gate="1" x="60.96" y="43.18" smashed="yes">
-<attribute name="VALUE" x="58.42" y="40.64" size="1.778" layer="96"/>
+<instance part="C9" gate="G$1" x="137.16" y="78.74" smashed="yes">
+<attribute name="NAME" x="138.684" y="81.661" size="1.778" layer="95"/>
+<attribute name="VALUE" x="138.684" y="76.581" size="1.778" layer="96"/>
 </instance>
-<instance part="C9" gate="G$1" x="144.78" y="63.5" smashed="yes">
-<attribute name="NAME" x="146.304" y="66.421" size="1.778" layer="95"/>
-<attribute name="VALUE" x="146.304" y="61.341" size="1.778" layer="96"/>
+<instance part="C10" gate="G$1" x="175.26" y="78.74" smashed="yes">
+<attribute name="NAME" x="176.784" y="81.661" size="1.778" layer="95"/>
+<attribute name="VALUE" x="176.784" y="76.581" size="1.778" layer="96"/>
 </instance>
-<instance part="C10" gate="G$1" x="182.88" y="63.5" smashed="yes">
-<attribute name="NAME" x="184.404" y="66.421" size="1.778" layer="95"/>
-<attribute name="VALUE" x="184.404" y="61.341" size="1.778" layer="96"/>
+<instance part="U3" gate="G$1" x="162.56" y="81.28" smashed="yes">
+<attribute name="NAME" x="154.94" y="90.424" size="1.778" layer="95"/>
+<attribute name="VALUE" x="154.94" y="69.85" size="1.778" layer="96"/>
 </instance>
-<instance part="U3" gate="G$1" x="170.18" y="66.04" smashed="yes">
-<attribute name="NAME" x="162.56" y="75.184" size="1.778" layer="95"/>
-<attribute name="VALUE" x="162.56" y="54.61" size="1.778" layer="96"/>
+<instance part="GND37" gate="1" x="137.16" y="71.12" smashed="yes">
+<attribute name="VALUE" x="134.62" y="68.58" size="1.778" layer="96"/>
 </instance>
-<instance part="GND37" gate="1" x="144.78" y="55.88" smashed="yes">
-<attribute name="VALUE" x="142.24" y="53.34" size="1.778" layer="96"/>
+<instance part="GND38" gate="1" x="149.86" y="71.12" smashed="yes">
+<attribute name="VALUE" x="147.32" y="68.58" size="1.778" layer="96"/>
 </instance>
-<instance part="GND38" gate="1" x="157.48" y="55.88" smashed="yes">
-<attribute name="VALUE" x="154.94" y="53.34" size="1.778" layer="96"/>
+<instance part="GND41" gate="1" x="175.26" y="71.12" smashed="yes">
+<attribute name="VALUE" x="172.72" y="68.58" size="1.778" layer="96"/>
 </instance>
-<instance part="GND41" gate="1" x="182.88" y="55.88" smashed="yes">
-<attribute name="VALUE" x="180.34" y="53.34" size="1.778" layer="96"/>
+<instance part="P+7" gate="G$1" x="175.26" y="88.9" smashed="yes">
+<attribute name="VALUE" x="174.244" y="92.456" size="1.778" layer="96"/>
 </instance>
-<instance part="P+7" gate="G$1" x="182.88" y="73.66" smashed="yes">
-<attribute name="VALUE" x="181.864" y="77.216" size="1.778" layer="96"/>
+<instance part="U$5" gate="G$1" x="137.16" y="88.9" smashed="yes">
+<attribute name="VALUE" x="136.144" y="92.456" size="1.778" layer="96"/>
 </instance>
-<instance part="U$5" gate="G$1" x="144.78" y="73.66" smashed="yes">
-<attribute name="VALUE" x="143.764" y="77.216" size="1.778" layer="96"/>
+<instance part="U4" gate="G$1" x="165.1" y="43.18" smashed="yes">
+<attribute name="NAME" x="157.48" y="52.324" size="1.778" layer="95"/>
+<attribute name="VALUE" x="157.48" y="31.75" size="1.778" layer="96"/>
 </instance>
-<instance part="U4" gate="G$1" x="172.72" y="27.94" smashed="yes">
-<attribute name="NAME" x="165.1" y="37.084" size="1.778" layer="95"/>
-<attribute name="VALUE" x="165.1" y="16.51" size="1.778" layer="96"/>
+<instance part="C15" gate="G$1" x="132.08" y="43.18" smashed="yes">
+<attribute name="NAME" x="133.096" y="43.815" size="1.778" layer="95"/>
+<attribute name="VALUE" x="133.096" y="38.989" size="1.778" layer="96"/>
 </instance>
-<instance part="C15" gate="G$1" x="139.7" y="27.94" smashed="yes">
-<attribute name="NAME" x="140.716" y="28.575" size="1.778" layer="95"/>
-<attribute name="VALUE" x="140.716" y="23.749" size="1.778" layer="96"/>
+<instance part="C16" gate="G$1" x="139.7" y="40.64" smashed="yes">
+<attribute name="NAME" x="141.224" y="43.561" size="1.778" layer="95"/>
+<attribute name="VALUE" x="141.224" y="38.481" size="1.778" layer="96"/>
 </instance>
-<instance part="C16" gate="G$1" x="147.32" y="25.4" smashed="yes">
-<attribute name="NAME" x="148.844" y="28.321" size="1.778" layer="95"/>
-<attribute name="VALUE" x="148.844" y="23.241" size="1.778" layer="96"/>
+<instance part="GND42" gate="1" x="132.08" y="33.02" smashed="yes">
+<attribute name="VALUE" x="129.54" y="30.48" size="1.778" layer="96"/>
 </instance>
-<instance part="GND42" gate="1" x="139.7" y="17.78" smashed="yes">
-<attribute name="VALUE" x="137.16" y="15.24" size="1.778" layer="96"/>
+<instance part="GND43" gate="1" x="139.7" y="33.02" smashed="yes">
+<attribute name="VALUE" x="137.16" y="30.48" size="1.778" layer="96"/>
 </instance>
-<instance part="GND43" gate="1" x="147.32" y="17.78" smashed="yes">
-<attribute name="VALUE" x="144.78" y="15.24" size="1.778" layer="96"/>
+<instance part="GND56" gate="1" x="152.4" y="33.02" smashed="yes">
+<attribute name="VALUE" x="149.86" y="30.48" size="1.778" layer="96"/>
 </instance>
-<instance part="GND56" gate="1" x="160.02" y="17.78" smashed="yes">
-<attribute name="VALUE" x="157.48" y="15.24" size="1.778" layer="96"/>
+<instance part="U$13" gate="G$1" x="182.88" y="50.8" smashed="yes">
+<attribute name="VALUE" x="181.864" y="54.356" size="1.778" layer="96"/>
 </instance>
-<instance part="U$13" gate="G$1" x="190.5" y="35.56" smashed="yes">
-<attribute name="VALUE" x="189.484" y="39.116" size="1.778" layer="96"/>
+<instance part="C18" gate="G$1" x="182.88" y="40.64" smashed="yes">
+<attribute name="NAME" x="184.404" y="43.561" size="1.778" layer="95"/>
+<attribute name="VALUE" x="184.404" y="38.481" size="1.778" layer="96"/>
 </instance>
-<instance part="C18" gate="G$1" x="190.5" y="25.4" smashed="yes">
-<attribute name="NAME" x="192.024" y="28.321" size="1.778" layer="95"/>
-<attribute name="VALUE" x="192.024" y="23.241" size="1.778" layer="96"/>
+<instance part="C19" gate="G$1" x="175.26" y="30.48" smashed="yes">
+<attribute name="NAME" x="176.784" y="33.401" size="1.778" layer="95"/>
+<attribute name="VALUE" x="176.784" y="28.321" size="1.778" layer="96"/>
 </instance>
-<instance part="C19" gate="G$1" x="182.88" y="15.24" smashed="yes">
-<attribute name="NAME" x="184.404" y="18.161" size="1.778" layer="95"/>
-<attribute name="VALUE" x="184.404" y="13.081" size="1.778" layer="96"/>
+<instance part="GND57" gate="1" x="175.26" y="22.86" smashed="yes">
+<attribute name="VALUE" x="172.72" y="20.32" size="1.778" layer="96"/>
 </instance>
-<instance part="GND57" gate="1" x="182.88" y="7.62" smashed="yes">
-<attribute name="VALUE" x="180.34" y="5.08" size="1.778" layer="96"/>
+<instance part="GND58" gate="1" x="182.88" y="33.02" smashed="yes">
+<attribute name="VALUE" x="180.34" y="30.48" size="1.778" layer="96"/>
 </instance>
-<instance part="GND58" gate="1" x="190.5" y="17.78" smashed="yes">
-<attribute name="VALUE" x="187.96" y="15.24" size="1.778" layer="96"/>
+<instance part="C20" gate="G$1" x="195.58" y="43.18" smashed="yes">
+<attribute name="NAME" x="196.596" y="43.815" size="1.778" layer="95"/>
+<attribute name="VALUE" x="196.596" y="38.989" size="1.778" layer="96"/>
 </instance>
-<instance part="5/7V7" gate="1" x="139.7" y="38.1" smashed="yes">
-<attribute name="VALUE" x="138.684" y="41.656" size="1.778" layer="96"/>
-</instance>
-<instance part="C20" gate="G$1" x="203.2" y="27.94" smashed="yes">
-<attribute name="NAME" x="204.216" y="28.575" size="1.778" layer="95"/>
-<attribute name="VALUE" x="204.216" y="23.749" size="1.778" layer="96"/>
-</instance>
-<instance part="GND59" gate="1" x="203.2" y="17.78" smashed="yes">
-<attribute name="VALUE" x="200.66" y="15.24" size="1.778" layer="96"/>
+<instance part="GND59" gate="1" x="195.58" y="33.02" smashed="yes">
+<attribute name="VALUE" x="193.04" y="30.48" size="1.778" layer="96"/>
 </instance>
 <instance part="FRAME3" gate="G$1" x="-30.48" y="-68.58" smashed="yes"/>
 <instance part="FRAME3" gate="G$2" x="142.24" y="-68.58" smashed="yes">
@@ -10557,186 +10579,154 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 <attribute name="SHEET" x="228.6" y="-67.31" size="2.54" layer="94"/>
 <attribute name="DRAWING_NAME" x="160.02" y="-49.53" size="2.54" layer="94"/>
 </instance>
+<instance part="P+6" gate="G$1" x="99.06" y="86.36" smashed="yes">
+<attribute name="VALUE" x="96.52" y="83.82" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="P+8" gate="G$1" x="132.08" y="55.88" smashed="yes">
+<attribute name="VALUE" x="129.54" y="53.34" size="1.778" layer="96" rot="R90"/>
+</instance>
 </instances>
 <busses>
 </busses>
 <nets>
-<net name="GND" class="0">
+<net name="GND" class="1">
 <segment>
-<wire x1="15.24" y1="25.4" x2="15.24" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="35.56" x2="71.12" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="Q2" gate="G$1" pin="S"/>
 <pinref part="GND17" gate="1" pin="GND"/>
 </segment>
 <segment>
-<wire x1="22.86" y1="25.4" x2="22.86" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="35.56" x2="78.74" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="R41" gate="G$1" pin="1"/>
 <pinref part="GND19" gate="1" pin="GND"/>
 </segment>
 <segment>
-<wire x1="7.62" y1="58.42" x2="7.62" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="68.58" x2="63.5" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="C6" gate="G$1" pin="2"/>
 <pinref part="GND33" gate="1" pin="GND"/>
 </segment>
 <segment>
-<wire x1="40.64" y1="58.42" x2="40.64" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="68.58" x2="96.52" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="C8" gate="G$1" pin="2"/>
 <pinref part="GND35" gate="1" pin="GND"/>
 </segment>
 <segment>
-<wire x1="60.96" y1="48.26" x2="60.96" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="58.42" x2="116.84" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="LED6" gate="G$1" pin="C"/>
 <pinref part="GND36" gate="1" pin="GND"/>
 </segment>
 <segment>
-<wire x1="182.88" y1="60.96" x2="182.88" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="76.2" x2="175.26" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="C10" gate="G$1" pin="2"/>
 <pinref part="GND41" gate="1" pin="GND"/>
 </segment>
 <segment>
-<wire x1="160.02" y1="66.04" x2="157.48" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="157.48" y1="66.04" x2="157.48" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="81.28" x2="149.86" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="81.28" x2="149.86" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="U3" gate="G$1" pin="GND"/>
 <pinref part="GND38" gate="1" pin="GND"/>
 </segment>
 <segment>
-<wire x1="144.78" y1="60.96" x2="144.78" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="76.2" x2="137.16" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="C9" gate="G$1" pin="2"/>
 <pinref part="GND37" gate="1" pin="GND"/>
 </segment>
 <segment>
-<wire x1="162.56" y1="27.94" x2="160.02" y2="27.94" width="0.1524" layer="91"/>
-<wire x1="160.02" y1="27.94" x2="160.02" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="43.18" x2="152.4" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="43.18" x2="152.4" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="U4" gate="G$1" pin="GND"/>
 <pinref part="GND56" gate="1" pin="GND"/>
 </segment>
 <segment>
-<wire x1="147.32" y1="20.32" x2="147.32" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="35.56" x2="139.7" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="GND43" gate="1" pin="GND"/>
 <pinref part="C16" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<wire x1="139.7" y1="20.32" x2="139.7" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="35.56" x2="132.08" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="GND42" gate="1" pin="GND"/>
 <pinref part="C15" gate="G$1" pin="-"/>
 </segment>
 <segment>
-<wire x1="182.88" y1="10.16" x2="182.88" y2="12.7" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="25.4" x2="175.26" y2="27.94" width="0.1524" layer="91"/>
 <pinref part="GND57" gate="1" pin="GND"/>
 <pinref part="C19" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<wire x1="190.5" y1="20.32" x2="190.5" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="35.56" x2="182.88" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="GND58" gate="1" pin="GND"/>
 <pinref part="C18" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<wire x1="203.2" y1="20.32" x2="203.2" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="35.56" x2="195.58" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="GND59" gate="1" pin="GND"/>
 <pinref part="C20" gate="G$1" pin="-"/>
 </segment>
 </net>
 <net name="PWM/!VPW" class="0">
 <segment>
-<wire x1="7.62" y1="33.02" x2="5.08" y2="33.02" width="0.1524" layer="91"/>
-<label x="2.54" y="32.512" size="1.016" layer="95" font="vector" ratio="10" rot="MR0"/>
+<wire x1="63.5" y1="43.18" x2="60.96" y2="43.18" width="0.1524" layer="91"/>
+<label x="58.42" y="42.672" size="1.016" layer="95" font="vector" ratio="10" rot="MR0"/>
 <pinref part="Q2" gate="G$1" pin="G"/>
 </segment>
 </net>
-<net name="3.3V" class="0">
+<net name="3.3V" class="1">
 <segment>
-<wire x1="182.88" y1="71.12" x2="182.88" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="73.66" x2="182.88" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="177.8" y1="71.12" x2="182.88" y2="71.12" width="0.1524" layer="91"/>
-<junction x="182.88" y="71.12"/>
+<wire x1="175.26" y1="86.36" x2="175.26" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="88.9" x2="175.26" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="86.36" x2="175.26" y2="86.36" width="0.1524" layer="91"/>
+<junction x="175.26" y="86.36"/>
 <pinref part="C10" gate="G$1" pin="1"/>
 <pinref part="U3" gate="G$1" pin="OUT"/>
 <pinref part="P+7" gate="G$1" pin="3.3V"/>
 </segment>
 </net>
-<net name="5V" class="0">
+<net name="5V" class="1">
 <segment>
-<wire x1="144.78" y1="73.66" x2="144.78" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="71.12" x2="154.94" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="154.94" y1="71.12" x2="160.02" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="68.58" x2="144.78" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="160.02" y1="60.96" x2="154.94" y2="60.96" width="0.1524" layer="91"/>
-<wire x1="154.94" y1="60.96" x2="154.94" y2="71.12" width="0.1524" layer="91"/>
-<junction x="144.78" y="71.12"/>
-<junction x="154.94" y="71.12"/>
+<wire x1="137.16" y1="88.9" x2="137.16" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="86.36" x2="147.32" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="147.32" y1="86.36" x2="152.4" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="83.82" x2="137.16" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="76.2" x2="147.32" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="147.32" y1="76.2" x2="147.32" y2="86.36" width="0.1524" layer="91"/>
+<junction x="137.16" y="86.36"/>
+<junction x="147.32" y="86.36"/>
 <pinref part="C9" gate="G$1" pin="1"/>
 <pinref part="U3" gate="G$1" pin="IN"/>
 <pinref part="U3" gate="G$1" pin="EN"/>
 <pinref part="U$5" gate="G$1" pin="5V"/>
 </segment>
 <segment>
-<wire x1="180.34" y1="33.02" x2="190.5" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="190.5" y1="33.02" x2="190.5" y2="35.56" width="0.1524" layer="91"/>
-<wire x1="190.5" y1="30.48" x2="190.5" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="190.5" y1="33.02" x2="203.2" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="203.2" y1="33.02" x2="203.2" y2="30.48" width="0.1524" layer="91"/>
-<junction x="190.5" y="33.02"/>
+<wire x1="172.72" y1="48.26" x2="182.88" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="48.26" x2="182.88" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="45.72" x2="182.88" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="48.26" x2="195.58" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="48.26" x2="195.58" y2="45.72" width="0.1524" layer="91"/>
+<junction x="182.88" y="48.26"/>
 <pinref part="U4" gate="G$1" pin="OUT"/>
 <pinref part="U$13" gate="G$1" pin="5V"/>
 <pinref part="C18" gate="G$1" pin="1"/>
 <pinref part="C20" gate="G$1" pin="+"/>
 </segment>
 </net>
-<net name="VBAT" class="0">
+<net name="VBAT" class="1">
 <segment>
-<wire x1="7.62" y1="73.66" x2="7.62" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="7.62" y1="71.12" x2="15.24" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="7.62" y1="71.12" x2="7.62" y2="68.58" width="0.1524" layer="91"/>
-<junction x="7.62" y="71.12"/>
+<wire x1="63.5" y1="83.82" x2="63.5" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="81.28" x2="71.12" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="81.28" x2="63.5" y2="78.74" width="0.1524" layer="91"/>
+<junction x="63.5" y="81.28"/>
 <pinref part="C6" gate="G$1" pin="1"/>
 <pinref part="U1" gate="G$1" pin="IN"/>
-<pinref part="P+6" gate="1" pin="VCC"/>
-</segment>
-</net>
-<net name="VCC" class="0">
-<segment>
-<wire x1="30.48" y1="71.12" x2="33.02" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="33.02" y1="68.58" x2="33.02" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="33.02" y1="71.12" x2="40.64" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="40.64" y1="71.12" x2="40.64" y2="68.58" width="0.1524" layer="91"/>
-<wire x1="40.64" y1="71.12" x2="43.18" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="43.18" y1="71.12" x2="60.96" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="60.96" y1="71.12" x2="60.96" y2="68.58" width="0.1524" layer="91"/>
-<junction x="33.02" y="71.12"/>
-<junction x="40.64" y="71.12"/>
-<pinref part="U1" gate="G$1" pin="OUT"/>
-<pinref part="R26" gate="G$1" pin="1"/>
-<pinref part="C8" gate="G$1" pin="1"/>
-<pinref part="R43" gate="G$1" pin="2"/>
-<pinref part="5/7V5" gate="1" pin="VCC"/>
-<wire x1="43.18" y1="73.66" x2="43.18" y2="71.12" width="0.1524" layer="91"/>
-<junction x="43.18" y="71.12"/>
-</segment>
-<segment>
-<wire x1="162.56" y1="33.02" x2="157.48" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="157.48" y1="33.02" x2="147.32" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="147.32" y1="33.02" x2="139.7" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="162.56" y1="22.86" x2="157.48" y2="22.86" width="0.1524" layer="91"/>
-<wire x1="157.48" y1="22.86" x2="157.48" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="139.7" y1="30.48" x2="139.7" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="147.32" y1="30.48" x2="147.32" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="139.7" y1="38.1" x2="139.7" y2="33.02" width="0.1524" layer="91"/>
-<junction x="157.48" y="33.02"/>
-<junction x="139.7" y="33.02"/>
-<junction x="147.32" y="33.02"/>
-<pinref part="U4" gate="G$1" pin="IN"/>
-<pinref part="U4" gate="G$1" pin="EN"/>
-<pinref part="C15" gate="G$1" pin="+"/>
-<pinref part="C16" gate="G$1" pin="1"/>
-<pinref part="5/7V7" gate="1" pin="VCC"/>
+<pinref part="VBAT" gate="1" pin="VCC"/>
 </segment>
 </net>
 <net name="N$17" class="0">
 <segment>
-<wire x1="22.86" y1="38.1" x2="22.86" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="22.86" y1="43.18" x2="22.86" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="22.86" y1="40.64" x2="15.24" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="15.24" y1="40.64" x2="15.24" y2="38.1" width="0.1524" layer="91"/>
-<junction x="22.86" y="40.64"/>
+<wire x1="78.74" y1="48.26" x2="78.74" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="53.34" x2="78.74" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="50.8" x2="71.12" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="50.8" x2="71.12" y2="48.26" width="0.1524" layer="91"/>
+<junction x="78.74" y="50.8"/>
 <pinref part="R40" gate="G$1" pin="1"/>
 <pinref part="R41" gate="G$1" pin="2"/>
 <pinref part="Q2" gate="G$1" pin="D"/>
@@ -10744,11 +10734,11 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 </net>
 <net name="N$20" class="0">
 <segment>
-<wire x1="22.86" y1="63.5" x2="22.86" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="22.86" y1="55.88" x2="22.86" y2="53.34" width="0.1524" layer="91"/>
-<wire x1="33.02" y1="58.42" x2="33.02" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="33.02" y1="55.88" x2="22.86" y2="55.88" width="0.1524" layer="91"/>
-<junction x="22.86" y="55.88"/>
+<wire x1="78.74" y1="73.66" x2="78.74" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="66.04" x2="78.74" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="68.58" x2="88.9" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="66.04" x2="78.74" y2="66.04" width="0.1524" layer="91"/>
+<junction x="78.74" y="66.04"/>
 <pinref part="R40" gate="G$1" pin="2"/>
 <pinref part="R26" gate="G$1" pin="2"/>
 <pinref part="U1" gate="G$1" pin="ADJ"/>
@@ -10756,17 +10746,55 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 </net>
 <net name="N$23" class="0">
 <segment>
-<wire x1="60.96" y1="58.42" x2="60.96" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="68.58" x2="116.84" y2="66.04" width="0.1524" layer="91"/>
 <pinref part="R43" gate="G$1" pin="1"/>
 <pinref part="LED6" gate="G$1" pin="A"/>
 </segment>
 </net>
 <net name="N$28" class="0">
 <segment>
-<wire x1="180.34" y1="22.86" x2="182.88" y2="22.86" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="22.86" x2="182.88" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="172.72" y1="38.1" x2="175.26" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="38.1" x2="175.26" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="U4" gate="G$1" pin="BP"/>
 <pinref part="C19" gate="G$1" pin="1"/>
+</segment>
+</net>
+<net name="VCC/2" class="1">
+<segment>
+<wire x1="86.36" y1="81.28" x2="88.9" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="78.74" x2="88.9" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="88.9" y1="81.28" x2="96.52" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="81.28" x2="96.52" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="81.28" x2="99.06" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="81.28" x2="116.84" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="81.28" x2="116.84" y2="78.74" width="0.1524" layer="91"/>
+<junction x="88.9" y="81.28"/>
+<junction x="96.52" y="81.28"/>
+<pinref part="U1" gate="G$1" pin="OUT"/>
+<pinref part="R26" gate="G$1" pin="1"/>
+<pinref part="C8" gate="G$1" pin="1"/>
+<pinref part="R43" gate="G$1" pin="2"/>
+<wire x1="99.06" y1="83.82" x2="99.06" y2="81.28" width="0.1524" layer="91"/>
+<junction x="99.06" y="81.28"/>
+<pinref part="P+6" gate="G$1" pin="VCC/2"/>
+</segment>
+<segment>
+<wire x1="154.94" y1="48.26" x2="149.86" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="48.26" x2="139.7" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="48.26" x2="132.08" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="38.1" x2="149.86" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="38.1" x2="149.86" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="45.72" x2="132.08" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="45.72" x2="139.7" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="132.08" y1="53.34" x2="132.08" y2="48.26" width="0.1524" layer="91"/>
+<junction x="149.86" y="48.26"/>
+<junction x="132.08" y="48.26"/>
+<junction x="139.7" y="48.26"/>
+<pinref part="U4" gate="G$1" pin="IN"/>
+<pinref part="U4" gate="G$1" pin="EN"/>
+<pinref part="C15" gate="G$1" pin="+"/>
+<pinref part="C16" gate="G$1" pin="1"/>
+<pinref part="P+8" gate="G$1" pin="VCC/2"/>
 </segment>
 </net>
 </nets>
