@@ -10,49 +10,58 @@
         android:id="@+id/emailAddressEditText"
         android:layout_width="314dp"
         android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="148dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="311dp"
         android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="213dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailAddressEditText"
+        app:layout_constraintVertical_bias="0.033" />
 
     <Button
         android:id="@+id/signInButton"
         android:layout_width="118dp"
         android:layout_height="62dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="Sign in"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="292dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
+        app:layout_constraintVertical_bias="0.063" />
 
     <ProgressBar
         android:id="@+id/signInProgress"
         style="?android:attr/progressBarStyle"
         android:layout_width="42dp"
         android:layout_height="43dp"
-        tools:layout_editor_absoluteX="185dp"
-        tools:layout_editor_absoluteY="302dp" />
-
-    <TextView
-        android:id="@+id/screenname"
-        android:layout_width="379dp"
-        android:layout_height="83dp"
-        android:gravity="center"
-        android:text="Vehicle Immobilization Device"
-        android:textColor="#2A5699"
-        android:textSize="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/emailAddressEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/signInButton"
+        app:layout_constraintEnd_toEndOf="@+id/signInButton"
+        app:layout_constraintStart_toStartOf="@+id/signInButton"
+        app:layout_constraintTop_toTopOf="@+id/signInButton" />
 </android.support.constraint.ConstraintLayout>

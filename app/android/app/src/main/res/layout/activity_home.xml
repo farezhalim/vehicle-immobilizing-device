@@ -36,7 +36,7 @@
     <Button
         android:id="@+id/button_toggleBT"
         android:layout_width="52dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:text="ON"
         app:layout_constraintBottom_toTopOf="@+id/lvNewDevices"
         app:layout_constraintEnd_toStartOf="@+id/button_toggleDiscoverable"
@@ -72,8 +72,8 @@
 
     <Button
         android:id="@+id/button_discover"
-        android:layout_width="91dp"
-        android:layout_height="46dp"
+        android:layout_width="104dp"
+        android:layout_height="48dp"
         android:onClick="btn_Discover"
         android:text="Discover"
         app:layout_constraintBottom_toTopOf="@+id/lvNewDevices"
