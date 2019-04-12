@@ -1,3 +1,13 @@
+/** The following Youtube tutorial services was used as a guide
+    to develop the Bluetooth portion of the app.
+
+    https://www.youtube.com/watch?v=y8R2C86BIUc&list=PLgCYzUzKIBE8KHMzpp6JITZ2JxTgWqDH2
+
+    Such as setting up the device as discoverable
+    and discovering devices around the phone
+    and establishing a connection with the device
+*/
+
 package com.example.immobilizer;
 
 import android.app.ProgressDialog;
