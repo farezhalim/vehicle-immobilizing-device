@@ -6,4 +6,4 @@ The folders here contain hardware and conceptual designs pertaining to the proje
 3. 'mechanical' contains the Solidworks files associated with product casing 
 4. 'prototype-491' contains EAGLE schematic and board files for the proof-of-concept built during ECE 491 Capstone
 5. 'lbr' contains all the necessary EAGLE libraries 
-6. 
+
