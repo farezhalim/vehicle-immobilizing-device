@@ -20,4 +20,5 @@ In addition to vehicle speed, the Arduino can also be queried for other OBD-II p
 *  Ambient air temperature
 
 For more information about OBD-II parameters:
-[text](http://en.wikipedia.org/wiki/OBD-II_PIDs)
+
+[http://en.wikipedia.org/wiki/OBD-II_PIDs](http://en.wikipedia.org/wiki/OBD-II_PIDs)
