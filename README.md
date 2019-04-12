@@ -16,7 +16,10 @@ All three programs are run as one systemd service on the Raspberry Pi during boo
 The following installations need to be done on the Raspberry Pi in the following order:
 1. sudo apt-get install libtool pkg-config build-essential autoconf automake smbus adxl expect picap obexpushd bluez-tools python-dev
 2. Libsodium for ZMQ purposes
-        `wget https://github.com/jedisct1/libsodium/releases/download/1.0.3/libsodium-1.0.3.tar.gz
+        `wget https://github.com/jedisct1/libsodium/releases/download/1.0.3/libsodium-1.0.3.tar.gz`
+`wget https://github.com/jedisct1/libsodium/releases/download/1.0.3/libsodium-1.0.3.tar.gz`
+`wget https://github.com/jedisct1/libsodium/releases/download/1.0.3/libsodium-1.0.3.tar.gz`
+`wget https://github.com/jedisct1/libsodium/releases/download/1.0.3/libsodium-1.0.3.tar.gz`
         tar -zxvf libsodium-1.0.3.tar.gz
         cd libsodium-1.0.3/
         ./configure
