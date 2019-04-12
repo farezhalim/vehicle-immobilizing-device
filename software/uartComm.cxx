@@ -65,7 +65,7 @@ void disableQuery(int m_port){
 std::vector<char> getVehicleSpeed(int m_port){ //READ VEHICLE SPEED FROM SPARKFUN BOARD
 	
 	
-	//std::cout << "get Speed: " << std::endl;
+	std::cout << "get Speed: " << std::endl;
 	speedCheckQuery(m_port); //Query OBDII Port
 	
 	usleep(1000000);
@@ -92,7 +92,7 @@ std::vector<char> getVehicleSpeed(int m_port){ //READ VEHICLE SPEED FROM SPARKFU
 			}			
 		}
 		if(twoCheck == 2){
-			//std::cout << "Done reading 2." << std::endl;
+			std::cout << "Done reading 2." << std::endl;
 			serialFlush(m_port);	
 			numByte = 0;
 			break;
@@ -151,7 +151,7 @@ void immobilizeCar(int m_port){ //SEND BRAKING PACKET TO SPARKFUN BOARD
 	
 
 		if(vehicleSpeedReturn && (speed[0] == '0') && ((speed[1] - '0') < 5)){
-			//std::cout << "I am trying to immobilize: " << std::endl;
+			std::cout << "I am trying to immobilize: " << std::endl;
 
 			immobilizeQuery(m_port); //Write Immobilized via ZMQ
 		}
@@ -205,7 +205,3 @@ int main(int argc, char** argvv){
 	serialClose(serial_port);
 	return 0;
 }
-
-
-
-

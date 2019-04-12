@@ -1,0 +1,10 @@
+[Unit]
+Description=OBEX Push service
+After=bluetooth.service
+Requires=bluetooth.service
+
+[Service]
+ExecStart=/usr/bin/obexpushd -B -o /bluetooth/ -n
+
+[Install]
+WantedBy=multi-user.target

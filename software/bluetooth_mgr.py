@@ -3,6 +3,7 @@ import os
 import time
 import filecmp
 
+
 #IPC Communication Initialization
 context = zmq.Context()
 	
@@ -23,12 +24,12 @@ while True:
 		print("i am trying to enable bluetooth")
 		os.system("sudo systemctl start bluetooth")
 		os.system("sudo systemctl start obexpush")
-		os.system("~/Desktop/bluetooth_ctl_mgr.sh") #Enable discoverable bluetooth flag
+		os.system("/home/pi/Desktop/bluetooth_ctl_mgr.sh") #Enable discoverable bluetooth flag
 		recieveFile = False
 		matchToFile = False
 			
 		while (not recieveFile): #Check whether key has been recieved
-			print("waiting for file")
+			#print("waiting for file")
 			recieveFile = os.path.isfile('/bluetooth/key.txt')
 			
 		if recieveFile == True:
