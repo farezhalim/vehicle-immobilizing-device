@@ -39,3 +39,9 @@ The following installations need to be done on the Raspberry Pi in the following
 5. C++ headers for ZMQ installation:
         `cd /usr/include/`
         `sudo wget https://raw.githubusercontent.com/zeromq/cppzmq/master/zmq.hpp`
+
+Miscellaneous:
+1. The following headers are to be included with the C++ file, in same location:
+    1. wiringPi.h
+    2. wiringSerial.h
+    3. zhelpers.hpp
