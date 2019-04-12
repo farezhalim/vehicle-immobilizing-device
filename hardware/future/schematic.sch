@@ -8764,6 +8764,9 @@ OBDII is an on board diagnostics standard that is used on a large variety of car
 0xA7 = read)</text>
 <text x="302.26" y="231.14" size="5.08" layer="250" font="vector" ratio="10">Accelerometer</text>
 <text x="269.24" y="154.94" size="5.08" layer="250" font="vector" ratio="10">Raspberry Pi Zero</text>
+<text x="144.78" y="40.64" size="1.778" layer="91">Credits to Sparkfun OBD-II to UART
+Breakout board for the design
+of circuitry around STN1110</text>
 </plain>
 <instances>
 <instance part="C4" gate="G$1" x="165.1" y="78.74" smashed="yes">
