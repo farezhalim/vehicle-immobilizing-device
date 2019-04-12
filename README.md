@@ -5,7 +5,7 @@ The vehicle immobilization device monitors a vehicle's speed and acceleration th
 
 There are three main programs associated with the objectives as listed above:
 1. detection.py - This is a python program that interfaces with the Digital MEMS Accelerometer using I2C. Upon change in state, this program control's the status LED's as well as state transistions using Inter-Process Communication via a TCP/IP socket using the ZMQ library.
-2. uartComm.cxx - A C++ program that interfaces with the UART to OBD-II circuitry (STN1110 Chip using ELM Command Set). Deals with immobilization, checking of speed, and disabling action. State transistions using ZMQ library. 
+2. uartComm.cxx - A C++ program that interfaces with the UART to OBD-II circuitry (STN1110 Chip using ELM Command Set). Deals with immobilization, checking of speed, and disabling action. State transistions using ZMQ library. Makefile is included. please make and build exectuable before running the rest of the programs.
 3. bluetooth_mgr.py - Python program that triggers linux services to interface with bluetooth and bluetooth file transfer on the Raspberry Pi. Further deals wih parsing of recieved file using /bluetooth/good.txt as the password file that is to be checked against. Also, triggers a bash script (bluetooth__ctl_mgr.sh) to interface with standard bluetooth stack of Linux to set power and discoverable. State transistions using ZMQ Library.
 
 All three programs are run as one systemd service on the Raspberry Pi during boot:
