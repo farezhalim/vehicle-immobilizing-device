@@ -13,6 +13,9 @@ All three programs are run as one systemd service on the Raspberry Pi during boo
 - All systemd functions can be performed including checking the status, turning the service on/off, etc.
 - The service file runs a bash script named mainController.sh located within /usr/bin. This bash script acts as a controller/manager of the aforementioned programs.
 
+Another systemd service has been created to enable the bluetooth file transfer using obexpushd, as part of the bluez standard bluetooth stack on Linux. This runs whenever bluetooth service is running:
+- The service file is to be located in /etc/systemd/system/. The service name is obexpushd.service
+
 The following installations need to be done on the Raspberry Pi in the following order:
 1. `sudo apt-get update`
 2. `sudo apt-get install libtool pkg-config build-essential autoconf automake smbus adxl expect picap obexpushd bluez-tools python-dev`
