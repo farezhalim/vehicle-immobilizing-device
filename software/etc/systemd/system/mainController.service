@@ -1,0 +1,9 @@
+[Unit]
+Description=Vehicle Immobilization Device
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/mainController.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -1,5 +1,6 @@
 import zmq
 import Adafruit_ADXL345
+import RPi.GPIO as GPIO
 import smbus
 import csv
 import time
@@ -130,20 +131,36 @@ pub.bind('tcp://127.0.0.1:5556')
 	
 id = 1	
 
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setup(5,GPIO.OUT)
+GPIO.setup(6,GPIO.OUT)
+
+
+
 while True:
+	GPIO.output(5, GPIO.HIGH)
+	GPIO.output(6, GPIO.LOW)
 	m_accident = detectAccident()
 	if m_accident == True:
 		print("I'M Here boolean flag true")
-		pub.send_string("Immobilized")		
+		GPIO.output(6, GPIO.HIGH)
+		GPIO.output(5, GPIO.LOW)
+		pub.send_string("Immobilized")
 
 	contents = sub.recv()
 	if contents.decode("utf-8") == "Detecting":
 		print('I not here')
+		GPIO.output(5, GPIO.HIGH)
+		GPIO.output(6, GPIO.LOW)
+
 		m_accident = detectAccident()
 		if m_accident == True:
-			pub.send_string("Immobilized")		
-		
-								
+			GPIO.output(6, GPIO.HIGH)
+			GPIO.output(5, GPIO.LOW)
+			pub.send_string("Immobilized")	
+
+					
 sub.close()
 context.term()
 
