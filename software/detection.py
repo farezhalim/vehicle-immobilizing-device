@@ -106,8 +106,8 @@ def detectAccident():
 		xAxisList.insert(0,x)
 		yAxisList.insert(0,y)
 
-		yDiff = yAxisList[24] -yAxisList[0]
-		xDiff = xAxisList[24] -xAxisList[0]
+		yDiff = yAxisList[49] - yAxisList[0]
+		xDiff = xAxisList[49] - xAxisList[0]
 
 		if yDiff > 2 or xDiff > 2: #Determine if accident has been detected
 			print('Accident has been detected. RIP.')
